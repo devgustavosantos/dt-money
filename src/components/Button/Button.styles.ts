@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { BREAKPOINTS } from '@/styles';
+
 import { ButtonProps, VariantsStyles } from './Button.types';
 
 const ButtonSmallStyles = css`
@@ -18,7 +20,6 @@ const ButtonLargeStyles = css`
 `;
 
 const buttonVariants: VariantsStyles = {
-  small: ButtonSmallStyles,
   medium: ButtonMediumStyles,
   large: ButtonLargeStyles,
 };
@@ -37,5 +38,10 @@ export const Button = styled.button<ButtonProps>`
   &:hover:not(:disabled) {
     background-color: ${({ theme }) => theme.PRIMARY_700};
     filter: initial;
+  }
+
+  @media only screen and (max-width: ${BREAKPOINTS.SMALL}) {
+    ${({ variant }) =>
+    variant === 'large' ? ButtonMediumStyles : ButtonSmallStyles};
   }
 `;

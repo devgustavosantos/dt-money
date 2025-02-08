@@ -1,6 +1,6 @@
 import { RuleSet } from 'styled-components';
 
-type Variants = 'small' | 'medium' | 'large';
+type Variants = 'medium' | 'large';
 
 type VariantsStyles = {
   [key in Variants]: RuleSet<object>;
