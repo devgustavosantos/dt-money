@@ -5,6 +5,8 @@ import { BREAKPOINTS } from '@/styles';
 
 const HeaderContainer = styled.header`
   background-color: ${({ theme }) => theme.BASE_900};
+  position: sticky;
+  top: 0;
 `;
 
 const HeaderWrapper = styled(Wrapper)`
