@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { BREAKPOINTS } from './breakpoints';
+import { BREAKPOINTS } from '@/styles/breakpoints';
 
 export const Wrapper = styled.div`
   max-width: 1152rem;

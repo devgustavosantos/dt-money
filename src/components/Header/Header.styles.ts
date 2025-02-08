@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { Button } from '@/components';
-import { BREAKPOINTS, Wrapper } from '@/styles';
+import { Button, Wrapper } from '@/components';
+import { BREAKPOINTS } from '@/styles';
 
 const HeaderContainer = styled.header`
   background-color: ${({ theme }) => theme.BASE_900};
