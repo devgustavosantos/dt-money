@@ -7,6 +7,7 @@ export const Global = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    line-height: 160%;
   }
 
   html#standard {
