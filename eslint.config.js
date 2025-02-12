@@ -51,6 +51,7 @@ export default tseslint.config(
           argsIgnorePattern: '^_',
         },
       ],
+      'max-lines': ['error', 50],
     },
   },
 );

@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { createGlobalStyle } from 'styled-components';
 
 import { BREAKPOINTS } from './breakpoints';
