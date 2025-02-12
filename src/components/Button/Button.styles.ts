@@ -29,7 +29,6 @@ export const Button = styled.button<ButtonProps>`
   background-color: ${({ theme }) => theme.PRIMARY_800};
   color: ${({ theme }) => theme.BASE_200};
   font-weight: 600;
-  line-height: 160%;
   display: block;
   width: 100%;
   transition: background-color 0.4s;
