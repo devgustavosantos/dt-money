@@ -1,13 +1,7 @@
 import styled from 'styled-components';
 
-import { BREAKPOINTS } from '@/styles/breakpoints';
-
 export const Wrapper = styled.div`
-  max-width: 1152rem;
-  padding-inline: 16rem;
+  max-width: 1168rem;
+  padding-inline: 24rem;
   margin: auto;
-
-  @media only screen and (max-width: ${BREAKPOINTS.MEDIUM}) {
-    padding-inline: 24rem;
-  }
 `;
