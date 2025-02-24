@@ -7,6 +7,7 @@ const HeaderContainer = styled.header`
   background-color: ${({ theme }) => theme.BASE_900};
   position: sticky;
   top: 0;
+  z-index: 999;
 `;
 
 const HeaderWrapper = styled(Wrapper)`
