@@ -54,4 +54,10 @@ export default tseslint.config(
       'max-lines': ['error', 50],
     },
   },
+  {
+    files: ['**/*.styles.ts'],
+    rules: {
+      'max-lines': ['error', 100],
+    },
+  },
 );
