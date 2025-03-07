@@ -3,4 +3,5 @@ export const formats = {
     style: 'currency',
     currency: 'BRL',
   }),
+  date: new Intl.DateTimeFormat('pt-br'),
 };

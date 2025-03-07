@@ -4,3 +4,4 @@ export { Header } from './Header';
 export { Footer } from './Footer';
 export { Card } from './Card';
 export { SearchBar } from './SearchBar';
+export { TransactionsTable } from './TransactionsTable';
