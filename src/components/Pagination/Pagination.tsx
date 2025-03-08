@@ -14,7 +14,10 @@ export function Pagination({ quantity, current }: PaginationProps) {
       </S.ChangePage>
       <S.PagesContainer defaultValue="1">
         {pages.map((page) => (
-          <S.PageSelector value={String(page)}>
+          <S.PageSelector
+            value={String(page)}
+            key={page}
+          >
             <S.PageIndicator>{page}</S.PageIndicator>
           </S.PageSelector>
         ))}
