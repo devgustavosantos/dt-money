@@ -5,6 +5,7 @@ export { NewTransaction } from './NewTransaction';
 export { Header } from './Header';
 export { Footer } from './Footer';
 export { Card } from './Card';
+export { Summary } from './Summary';
 export { SearchBar } from './SearchBar';
 export { TransactionsTable } from './TransactionsTable';
 export { Pagination } from './Pagination';
