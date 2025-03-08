@@ -9,7 +9,7 @@ export function SearchBar({ className }: SearchBarProps) {
       as="form"
       className={className}
     >
-      <S.Input
+      <input
         type="text"
         placeholder={DICTIONARY.SEARCH_A_TRANSACTION}
       />

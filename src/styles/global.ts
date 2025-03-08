@@ -72,6 +72,10 @@ export const Global = createGlobalStyle`
     &:hover {
       filter: brightness(0.8);
     }
+
+    &:not(:disabled):focus {
+      outline: 2rem solid ${({ theme }) => theme.PRIMARY_700};
+    }
   }
 
   a:visited {
@@ -82,6 +86,19 @@ export const Global = createGlobalStyle`
     font-size: inherit;
     color: inherit;
     line-height: inherit;
+  }
+
+  input {
+    width: 100%;
+    padding: 16rem;
+    border-radius: 6rem;
+    background-color: ${({ theme }) => theme.BASE_900};
+    border: none;
+
+    &::placeholder {
+      color: ${({ theme }) => theme.BASE_500};
+      font-size: 16rem;
+    }
   }
 
   @media only screen and (min-width: ${BREAKPOINTS.EXTRA_LARGE}) {

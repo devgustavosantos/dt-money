@@ -10,19 +10,6 @@ const SearchBarContainer = styled(Wrapper)`
   gap: 16rem;
 `;
 
-const Input = styled.input`
-  flex: 1 1 0;
-  padding: 16rem;
-  border-radius: 6rem;
-  background-color: ${({ theme }) => theme.BASE_900};
-  border: none;
-
-  &::placeholder {
-    color: ${({ theme }) => theme.BASE_500};
-    font-size: 16rem;
-  }
-`;
-
 const Button = styled.button`
   display: flex;
   align-items: center;
@@ -59,4 +46,4 @@ const ButtonText = styled.span`
   }
 `;
 
-export { SearchBarContainer, Input, Button, CustomMagnifyingGlass, ButtonText };
+export { SearchBarContainer, Button, CustomMagnifyingGlass, ButtonText };
