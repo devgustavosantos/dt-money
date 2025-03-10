@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "userId": "3",
+      "name": "Desenvolvimento de Site",
+      "value": 100,
+      "type": "income",
+      "category": "Venda",
+      "createdAt": "2025-03-10T09:35:18.982Z"
+    },
+    {
+      "id": 2,
+      "userId": "3",
+      "name": "Restaurante",
+      "value": 500,
+      "type": "outcome",
+      "category": "Alimentação",
+      "createdAt": "2025-03-10T10:17:42.272Z"
+    },
+    {
+      "id": 3,
+      "userId": "3",
+      "name": "Empréstimo",
+      "value": 5000,
+      "type": "income",
+      "category": "Banco",
+      "createdAt": "2025-03-10T10:24:01.370Z"
+    }
+  ]
+}

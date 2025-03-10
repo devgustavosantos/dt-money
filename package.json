@@ -11,12 +11,14 @@
     "prettier": "prettier --write .",
     "eslint": "eslint --fix",
     "lint-staged": "lint-staged --allow-empty",
-    "prepare": "husky"
+    "prepare": "husky",
+    "server:dev": "json-server --watch db.json --port 3004 --delay 500"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.7",
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-radio-group": "^1.2.3",
+    "json-server": "0.17.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "styled-components": "^6.1.12"
