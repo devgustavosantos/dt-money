@@ -1,13 +1,16 @@
 {
   "users": [
     {
-      "id": 1
+      "id": 1,
+      "name": "João"
     },
     {
-      "id": 2
+      "id": 2,
+      "name": "Paulo"
     },
     {
-      "id": 3
+      "id": 3,
+      "name": "Pedro"
     }
   ],
   "transactions": [
