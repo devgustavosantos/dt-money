@@ -8,6 +8,7 @@ type VariantsStyles = {
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant: Variants;
+  isMuted?: boolean;
 }
 
 export type { VariantsStyles, ButtonProps };

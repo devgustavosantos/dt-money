@@ -26,7 +26,8 @@ const buttonVariants: VariantsStyles = {
 
 export const Button = styled.button<ButtonProps>`
   border-radius: 6rem;
-  background-color: ${({ theme }) => theme.PRIMARY_800};
+  background-color: ${({ theme, isMuted }) =>
+    isMuted ? theme.BASE_700 : theme.PRIMARY_800};
   color: ${({ theme }) => theme.BASE_200};
   font-weight: 600;
   display: block;
@@ -35,7 +36,8 @@ export const Button = styled.button<ButtonProps>`
   ${({ variant }) => buttonVariants[variant]};
 
   &:hover:not(:disabled) {
-    background-color: ${({ theme }) => theme.PRIMARY_700};
+    background-color: ${({ theme, isMuted }) =>
+    isMuted ? theme.BASE_600 : theme.PRIMARY_700};
     filter: initial;
   }
 
