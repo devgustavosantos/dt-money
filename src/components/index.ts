@@ -9,3 +9,4 @@ export { Summary } from './Summary';
 export { SearchBar } from './SearchBar';
 export { TransactionsTable } from './TransactionsTable';
 export { Pagination } from './Pagination';
+export { Authentication } from './Authentication';

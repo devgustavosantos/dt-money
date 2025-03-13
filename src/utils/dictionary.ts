@@ -9,4 +9,12 @@ export const DICTIONARY = {
   CATEGORY: 'Categoria',
   INCOME: 'Entrada',
   OUTCOME: 'Saída',
+  WELCOME: 'Seja bem-vindo!',
+  ALREADY_REGISTERED: 'Já tenho uma conta',
+  WANT_REGISTER: 'Criar uma nova conta',
+  ENTER: 'Entrar',
+  USERNAME: 'Nome de Usuário',
+  BACK: 'Voltar',
+  USER_NOT_FOUND: 'Usuário não encontrado, tente novamente.',
+  USER_ALREADY_REGISTERED: 'Usuário já cadastrado, tente outro nome.',
 };
