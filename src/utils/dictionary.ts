@@ -17,4 +17,5 @@ export const DICTIONARY = {
   BACK: 'Voltar',
   USER_NOT_FOUND: 'Usuário não encontrado, tente novamente.',
   USER_ALREADY_REGISTERED: 'Usuário já cadastrado, tente outro nome.',
+  LOGOUT: 'Sair',
 };

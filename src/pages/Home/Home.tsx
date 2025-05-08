@@ -4,6 +4,7 @@ import {
   TransactionsTable,
   Pagination,
   Footer,
+  Authentication,
 } from '@/components';
 
 import * as S from './Home.styles';
@@ -25,6 +26,7 @@ export function Home() {
           quantity={3}
         />
       </S.Main>
+      <Authentication />
       <Footer />
     </S.HomeContainer>
   );
