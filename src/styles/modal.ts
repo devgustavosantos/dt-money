@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { css } from 'styled-components';
 
 import { BREAKPOINTS } from './breakpoints';
@@ -33,7 +34,7 @@ const content = css`
 const title = css`
   font-weight: 700;
   font-size: 24rem;
-  line-height: 160%;
+  line-height: 140%;
   color: ${({ theme }) => theme.BASE_300};
 
   @media only screen and (max-width: ${BREAKPOINTS.SMALL}) {
@@ -41,8 +42,14 @@ const title = css`
   }
 `;
 
+const description = css`
+  font-size: 14rem;
+  line-height: 160%;
+`;
+
 export const modal = {
   overlay,
   content,
   title,
+  description,
 };

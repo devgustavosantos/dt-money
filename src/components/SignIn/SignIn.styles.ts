@@ -16,15 +16,15 @@ const CustomTitle = styled(AlertDialog.Title)`
   ${modal.title}
 `;
 
-const LoginForm = styled.form`
-  margin-top: 24rem;
+const CustomDescription = styled(AlertDialog.Description)`
+  ${modal.description}
 `;
 
-const ButtonsContainer = styled.div`
+const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 12rem;
-  margin-top: 20rem;
+  margin-top: 12rem;
 `;
 
 const ErrorMessage = styled.p`
@@ -36,7 +36,7 @@ export {
   CustomOverlay,
   CustomContent,
   CustomTitle,
+  CustomDescription,
   LoginForm,
-  ButtonsContainer,
   ErrorMessage,
 };

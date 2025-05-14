@@ -11,31 +11,21 @@ export function SignIn() {
         <S.CustomOverlay />
         <S.CustomContent>
           <S.CustomTitle>{DICTIONARY.WELCOME}</S.CustomTitle>
+          <S.CustomDescription>
+            {DICTIONARY.WELCOME_DESCRIPTION}
+          </S.CustomDescription>
           <S.LoginForm>
             <input
-              type="text"
-              placeholder={DICTIONARY.USERNAME}
+              type="email"
+              placeholder={DICTIONARY.EMAIL}
               autoFocus
-              style={{ display: 'none' }}
             />
-            <S.ButtonsContainer>
-              <Button
-                type="button"
-                variant="large"
-              >
-                {DICTIONARY.ALREADY_REGISTERED}
-              </Button>
-              <Button
-                type="button"
-                variant="large"
-                isMuted
-              >
-                {DICTIONARY.WANT_REGISTER}
-              </Button>
-            </S.ButtonsContainer>
-            <S.ErrorMessage style={{ display: 'none' }}>
-              {DICTIONARY.USER_ALREADY_REGISTERED}
-            </S.ErrorMessage>
+            <Button
+              type="submit"
+              variant="large"
+            >
+              {DICTIONARY.SEND}
+            </Button>
           </S.LoginForm>
         </S.CustomContent>
       </AlertDialog.Portal>
