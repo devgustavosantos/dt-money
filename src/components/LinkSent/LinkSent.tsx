@@ -1,4 +1,5 @@
 import { Button } from '@/components';
+import { custom as C } from '@/styles';
 import { DICTIONARY } from '@/utils';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 
@@ -8,12 +9,12 @@ export function LinkSent() {
   return (
     <AlertDialog.Root open>
       <AlertDialog.Portal>
-        <S.CustomOverlay />
-        <S.CustomContent>
-          <S.CustomTitle>{DICTIONARY.LINK_SENT}</S.CustomTitle>
-          <S.CustomDescription>
+        <C.AlertDialogOverlay />
+        <C.AlertDialogContent>
+          <C.AlertDialogTitle>{DICTIONARY.LINK_SENT}</C.AlertDialogTitle>
+          <C.AlertDialogDescription>
             {DICTIONARY.LINK_SENT_DESCRIPTION}
-          </S.CustomDescription>
+          </C.AlertDialogDescription>
           <S.CustomCheckCircle weight="fill" />
           <Button
             variant="large"
@@ -22,7 +23,7 @@ export function LinkSent() {
           >
             {DICTIONARY.BACK}
           </Button>
-        </S.CustomContent>
+        </C.AlertDialogContent>
       </AlertDialog.Portal>
     </AlertDialog.Root>
   );

@@ -1,5 +1,7 @@
 /* eslint-disable max-lines */
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import * as AlertDialog from '@radix-ui/react-alert-dialog';
 
 import { BREAKPOINTS } from './breakpoints';
 
@@ -8,6 +10,10 @@ const overlay = css`
   inset: 0;
   background-color: rgba(0, 0, 0, 75%);
   z-index: 999;
+`;
+
+const AlertDialogOverlay = styled(AlertDialog.Overlay)`
+  ${overlay}
 `;
 
 const content = css`
@@ -31,6 +37,11 @@ const content = css`
   }
 `;
 
+const AlertDialogContent = styled(AlertDialog.Content)`
+  ${content}
+  max-width: 380rem;
+`;
+
 const title = css`
   font-weight: 700;
   font-size: 24rem;
@@ -42,14 +53,26 @@ const title = css`
   }
 `;
 
-const description = css`
+const AlertDialogTitle = styled(AlertDialog.Title)`
+  ${title}
+`;
+
+const AlertDialogDescription = styled(AlertDialog.Description)`
   font-size: 14rem;
   line-height: 160%;
 `;
 
-export const modal = {
+const modal = {
   overlay,
   content,
   title,
-  description,
 };
+
+const custom = {
+  AlertDialogOverlay,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogDescription,
+};
+
+export { modal, custom };

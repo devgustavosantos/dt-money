@@ -1,4 +1,5 @@
 import { Button } from '@/components';
+import { custom as C } from '@/styles';
 import { DICTIONARY } from '@/utils';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 
@@ -8,12 +9,12 @@ export function SignIn() {
   return (
     <AlertDialog.Root open>
       <AlertDialog.Portal>
-        <S.CustomOverlay />
-        <S.CustomContent>
-          <S.CustomTitle>{DICTIONARY.WELCOME}</S.CustomTitle>
-          <S.CustomDescription>
+        <C.AlertDialogOverlay />
+        <C.AlertDialogContent>
+          <C.AlertDialogTitle>{DICTIONARY.WELCOME}</C.AlertDialogTitle>
+          <C.AlertDialogDescription>
             {DICTIONARY.WELCOME_DESCRIPTION}
-          </S.CustomDescription>
+          </C.AlertDialogDescription>
           <S.LoginForm>
             <input
               type="email"
@@ -27,7 +28,7 @@ export function SignIn() {
               {DICTIONARY.SEND}
             </Button>
           </S.LoginForm>
-        </S.CustomContent>
+        </C.AlertDialogContent>
       </AlertDialog.Portal>
     </AlertDialog.Root>
   );

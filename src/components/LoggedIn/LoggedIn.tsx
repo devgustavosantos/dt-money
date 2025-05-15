@@ -1,4 +1,5 @@
 import { Button } from '@/components';
+import { custom as C } from '@/styles';
 import { DICTIONARY } from '@/utils';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 
@@ -8,12 +9,12 @@ export function LoggedIn() {
   return (
     <AlertDialog.Root open>
       <AlertDialog.Portal>
-        <S.CustomOverlay />
-        <S.CustomContent>
-          <S.CustomTitle>{DICTIONARY.LOGGED_IN}</S.CustomTitle>
-          <S.CustomDescription>
+        <C.AlertDialogOverlay />
+        <C.AlertDialogContent>
+          <C.AlertDialogTitle>{DICTIONARY.LOGGED_IN}</C.AlertDialogTitle>
+          <C.AlertDialogDescription>
             {DICTIONARY.LOGGED_IN_DESCRIPTION}
-          </S.CustomDescription>
+          </C.AlertDialogDescription>
           <S.CustomUserCircleCheck weight="fill" />
           <Button
             variant="large"
@@ -21,7 +22,7 @@ export function LoggedIn() {
           >
             {DICTIONARY.START}
           </Button>
-        </S.CustomContent>
+        </C.AlertDialogContent>
       </AlertDialog.Portal>
     </AlertDialog.Root>
   );

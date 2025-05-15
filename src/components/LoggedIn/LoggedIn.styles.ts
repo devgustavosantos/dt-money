@@ -1,38 +1,11 @@
 import styled from 'styled-components';
 
-import { modal } from '@/styles';
 import { UserCircleCheck } from '@phosphor-icons/react';
-import * as AlertDialog from '@radix-ui/react-alert-dialog';
 
-const CustomOverlay = styled(AlertDialog.Overlay)`
-  ${modal.overlay}
-`;
-
-const CustomContent = styled(AlertDialog.Content)`
-  ${modal.content}
-  max-width: 380rem;
-`;
-
-const CustomTitle = styled(AlertDialog.Title)`
-  ${modal.title}
-`;
-
-const CustomDescription = styled(AlertDialog.Description)`
-  ${modal.description}
-`;
-
-const CustomUserCircleCheck = styled(UserCircleCheck)`
+export const CustomUserCircleCheck = styled(UserCircleCheck)`
   display: block;
   width: 100rem;
   height: 100rem;
   margin: 16rem auto;
   color: ${({ theme }) => theme.PRIMARY_800};
 `;
-
-export {
-  CustomOverlay,
-  CustomContent,
-  CustomTitle,
-  CustomDescription,
-  CustomUserCircleCheck,
-};

@@ -1,4 +1,4 @@
 export { BREAKPOINTS } from './breakpoints';
 export { COLORS } from './colors';
-export { modal } from './modal';
+export { modal, custom } from './modal';
 export { Styling } from './Styling';
