@@ -20,7 +20,7 @@ export function LinkSent() {
             type="button"
             isMuted
           >
-            Voltar
+            {DICTIONARY.BACK}
           </Button>
         </S.CustomContent>
       </AlertDialog.Portal>

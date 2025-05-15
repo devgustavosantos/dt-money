@@ -17,4 +17,5 @@ export const DICTIONARY = {
   LINK_SENT: 'Link enviado!',
   LINK_SENT_DESCRIPTION:
     'Confira o link que te enviamos por e-mail para pode prosseguir!',
+  BACK: 'Voltar',
 };
