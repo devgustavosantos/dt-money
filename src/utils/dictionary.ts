@@ -18,4 +18,8 @@ export const DICTIONARY = {
   LINK_SENT_DESCRIPTION:
     'Confira o link que te enviamos por e-mail para pode prosseguir!',
   BACK: 'Voltar',
+  LOGGED_IN: 'Login concluído!',
+  LOGGED_IN_DESCRIPTION:
+    'Agora você pode aproveitar os recursos da nossa ferramenta.',
+  START: 'Começar',
 };

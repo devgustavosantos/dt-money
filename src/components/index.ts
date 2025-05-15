@@ -12,4 +12,5 @@ export { Pagination } from './Pagination';
 export { SignIn } from './SignIn';
 export { SignOut } from './SignOut';
 export { LinkSent } from './LinkSent';
+export { LoggedIn } from './LoggedIn';
 export { Authentication } from './Authentication';
