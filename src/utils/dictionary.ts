@@ -14,4 +14,7 @@ export const DICTIONARY = {
   EMAIL: 'E-mail',
   SEND: 'Enviar',
   LOGOUT: 'Sair',
+  LINK_SENT: 'Link enviado!',
+  LINK_SENT_DESCRIPTION:
+    'Confira o link que te enviamos por e-mail para pode prosseguir!',
 };
