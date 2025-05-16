@@ -4,9 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "concurrently \"npm:dev\" \"npm:dev:server \"",
+    "start": "concurrently \"npm:dev\"",
     "dev": "vite",
-    "dev:server": "json-server --watch db.json --port 3004 --delay 500",
     "build": "tsc -b && vite build",
     "lint": "npm run prettier && npm run eslint",
     "preview": "vite preview",
@@ -45,7 +44,6 @@
     "eslint-plugin-unused-imports": "^4.1.3",
     "globals": "^15.9.0",
     "husky": "^9.1.4",
-    "json-server": "0.17.4",
     "lint-staged": "^15.2.9",
     "postcss-styled-components": "^0.2.1",
     "prettier": "3.3.3",
