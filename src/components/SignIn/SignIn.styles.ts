@@ -8,8 +8,9 @@ const LoginForm = styled.form`
 `;
 
 const ErrorMessage = styled.p`
-  margin-top: 20rem;
   font-size: 14rem;
+  color: ${({ theme }) => theme.SECONDARY_800};
+  filter: brightness(1.5);
 `;
 
 export { LoginForm, ErrorMessage };

@@ -1,3 +1,5 @@
+import { CONSTANTS } from './constants';
+
 export const DICTIONARY = {
   NEW_TRANSACTION: 'Nova transação',
   COPYRIGHT: '© 2025 - Todos os direitos reservados.',
@@ -22,4 +24,6 @@ export const DICTIONARY = {
   LOGGED_IN_DESCRIPTION:
     'Agora você pode aproveitar os recursos da nossa ferramenta.',
   START: 'Começar',
+  INVALID_EMAIL: 'Este e-mail é inválido.',
+  EMAIL_LENGTH: `O e-mail deve ter pelo menos ${CONSTANTS.MIN_EMAIL_LENGTH} caracteres.`,
 };
