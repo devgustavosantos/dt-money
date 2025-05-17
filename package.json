@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "concurrently \"npm:dev\"",
+    "start": "concurrently \"npm:dev\" \"npm:dev:server \"",
     "dev": "vite",
+    "dev:server": "firebase emulators:start",
     "build": "tsc -b && vite build",
     "lint": "npm run prettier && npm run eslint",
     "preview": "vite preview",
