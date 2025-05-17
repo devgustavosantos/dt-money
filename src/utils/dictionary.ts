@@ -26,4 +26,5 @@ export const DICTIONARY = {
   START: 'Começar',
   INVALID_EMAIL: 'Este e-mail é inválido.',
   EMAIL_LENGTH: `O e-mail deve ter pelo menos ${CONSTANTS.MIN_EMAIL_LENGTH} caracteres.`,
+  REQUEST_ERROR: 'Ocorreu um erro interno! Tente novamente mais tarde.',
 };

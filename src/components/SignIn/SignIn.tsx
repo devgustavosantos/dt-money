@@ -7,7 +7,7 @@ import { useSignIn } from './SignIn.hook';
 import * as S from './SignIn.styles';
 
 export function SignIn() {
-  const { handleSubmit, register, onSubmit, emailError } = useSignIn();
+  const { handleSubmit, register, onSubmit, error } = useSignIn();
 
   return (
     <AlertDialog.Root open>
@@ -25,11 +25,11 @@ export function SignIn() {
               autoFocus
               {...register('email')}
             />
-            {emailError && <S.ErrorMessage>{emailError}</S.ErrorMessage>}
+            {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
             <Button
               type="submit"
               variant="large"
-              disabled={!!emailError}
+              disabled={!!error}
             >
               {DICTIONARY.SEND}
             </Button>

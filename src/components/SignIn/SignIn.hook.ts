@@ -1,10 +1,16 @@
+import { sendSignInLinkToEmail } from 'firebase/auth';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { actionCodeSettings, auth } from '@/services';
+import { DICTIONARY } from '@/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { signInFormSchema, SignInFormType } from './SignIn.types';
 
 export function useSignIn() {
+  const [requestError, setRequestError] = useState('');
+
   const {
     register,
     handleSubmit,
@@ -14,10 +20,18 @@ export function useSignIn() {
   });
 
   function onSubmit(data: SignInFormType) {
-    console.log('>>> data', data);
+    sendSignInLinkToEmail(auth, data.email, actionCodeSettings)
+      .then(() => {
+        console.log('>>> link sent');
+      })
+      .catch((error) => {
+        setRequestError(DICTIONARY.REQUEST_ERROR);
+
+        console.info('>>> error', error);
+      });
   }
 
-  const emailError = errors.email?.message;
+  const error = requestError || errors.email?.message;
 
-  return { onSubmit, register, handleSubmit, emailError };
+  return { onSubmit, register, handleSubmit, error };
 }
