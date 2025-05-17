@@ -7,7 +7,7 @@ import { useSignIn } from './SignIn.hook';
 import * as S from './SignIn.styles';
 
 export function SignIn() {
-  const { handleSubmit, register, onSubmit, error } = useSignIn();
+  const { handleSubmit, register, onSubmit, error, isLoading } = useSignIn();
 
   return (
     <AlertDialog.Root open>
@@ -29,9 +29,10 @@ export function SignIn() {
             <Button
               type="submit"
               variant="large"
-              disabled={!!error}
+              disabled={!!error || isLoading}
             >
-              {DICTIONARY.SEND}
+              {!isLoading && DICTIONARY.SEND}
+              {isLoading && <S.CustomCircleNotch weight="bold" />}
             </Button>
           </S.LoginForm>
         </C.AlertDialogContent>

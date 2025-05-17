@@ -12,7 +12,7 @@ export const DICTIONARY = {
   INCOME: 'Entrada',
   OUTCOME: 'Saída',
   WELCOME: 'Seja bem-vindo!',
-  WELCOME_DESCRIPTION: 'Digite seu e-mail para te enviarmos o link de login.',
+  WELCOME_DESCRIPTION: 'Digite seu e-mail para receber o link de login.',
   EMAIL: 'E-mail',
   SEND: 'Enviar',
   LOGOUT: 'Sair',

@@ -10,6 +10,7 @@ const overlay = css`
   inset: 0;
   background-color: rgba(0, 0, 0, 75%);
   z-index: 999;
+  backdrop-filter: blur(4rem);
 `;
 
 const AlertDialogOverlay = styled(AlertDialog.Overlay)`

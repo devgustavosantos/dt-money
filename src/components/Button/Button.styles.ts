@@ -30,7 +30,8 @@ export const Button = styled.button<ButtonProps>`
     isMuted ? theme.BASE_700 : theme.PRIMARY_800};
   color: ${({ theme }) => theme.BASE_200};
   font-weight: 600;
-  display: block;
+  display: grid;
+  place-items: center;
   width: 100%;
   transition: background-color 0.4s;
   ${({ variant }) => buttonVariants[variant]};
