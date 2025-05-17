@@ -1,7 +1,10 @@
-import { SignIn, SignOut } from '@/components';
+import { SignIn, LinkSent } from '@/components';
+import { useAuthenticationContext } from '@/contexts';
 
 export function Authentication() {
-  const isAuthenticated = true;
+  const { linkSent } = useAuthenticationContext();
 
-  return isAuthenticated ? <SignOut /> : <SignIn />;
+  if (linkSent) return <LinkSent />;
+
+  return <SignIn />;
 }

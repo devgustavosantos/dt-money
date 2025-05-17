@@ -1,9 +1,8 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, connectAuthEmulator } from 'firebase/auth';
 
+import config from '@/../firebase.json';
 import { CONSTANTS } from '@/utils';
-
-import config from '../../firebase.json';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,

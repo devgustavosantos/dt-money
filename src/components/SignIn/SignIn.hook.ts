@@ -2,14 +2,17 @@ import { sendSignInLinkToEmail } from 'firebase/auth';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { useAuthenticationContext } from '@/contexts';
 import { actionCodeSettings, auth } from '@/services';
-import { DICTIONARY } from '@/utils';
+import { CONSTANTS, DICTIONARY } from '@/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { signInFormSchema, SignInFormType } from './SignIn.types';
 
 export function useSignIn() {
   const [requestError, setRequestError] = useState('');
+
+  const { handleLinkSent } = useAuthenticationContext();
 
   const {
     register,
@@ -22,7 +25,11 @@ export function useSignIn() {
   function onSubmit(data: SignInFormType) {
     sendSignInLinkToEmail(auth, data.email, actionCodeSettings)
       .then(() => {
-        console.log('>>> link sent');
+        handleLinkSent(true);
+
+        setRequestError('');
+
+        window.localStorage.setItem(CONSTANTS.EMAIL_KEY, data.email);
       })
       .catch((error) => {
         setRequestError(DICTIONARY.REQUEST_ERROR);
