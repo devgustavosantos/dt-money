@@ -2,9 +2,9 @@ import { SignIn, LinkSent } from '@/components';
 import { useAuthenticationContext } from '@/contexts';
 
 export function Authentication() {
-  const { linkSent } = useAuthenticationContext();
+  const { currentStep } = useAuthenticationContext();
 
-  if (linkSent) return <LinkSent />;
+  if (currentStep === 'send') return <LinkSent />;
 
   return <SignIn />;
 }

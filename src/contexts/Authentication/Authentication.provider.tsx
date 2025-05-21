@@ -1,22 +1,22 @@
 import { useState } from 'react';
 
 import {
-  AuthenticationContextType,
   AuthenticationProviderProps,
+  StepsAllowed,
 } from './Authentication.types';
 import { AuthenticationContext } from './index';
 
 export function AuthenticationProvider({
   children,
 }: AuthenticationProviderProps) {
-  const [linkSent, setLinkSent] = useState(false);
+  const [currentStep, setCurrentStep] = useState<StepsAllowed>('welcome');
 
-  function handleLinkSent(linkSent: AuthenticationContextType['linkSent']) {
-    setLinkSent(linkSent);
+  function handleCurrentStep(step: StepsAllowed) {
+    setCurrentStep(step);
   }
 
   return (
-    <AuthenticationContext.Provider value={{ linkSent, handleLinkSent }}>
+    <AuthenticationContext.Provider value={{ currentStep, handleCurrentStep }}>
       {children}
     </AuthenticationContext.Provider>
   );

@@ -13,7 +13,7 @@ export function useSignIn() {
   const [requestError, setRequestError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const { handleLinkSent } = useAuthenticationContext();
+  const { handleCurrentStep } = useAuthenticationContext();
 
   const {
     register,
@@ -28,7 +28,7 @@ export function useSignIn() {
 
     sendSignInLinkToEmail(auth, data.email, actionCodeSettings)
       .then(() => {
-        handleLinkSent(true);
+        handleCurrentStep('send');
 
         setRequestError('');
 

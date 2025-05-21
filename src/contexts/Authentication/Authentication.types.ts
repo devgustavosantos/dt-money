@@ -2,9 +2,15 @@ interface AuthenticationProviderProps {
   children: React.ReactNode;
 }
 
+type StepsAllowed = 'welcome' | 'send' | 'loggedIn';
+
 interface AuthenticationContextType {
-  linkSent: boolean;
-  handleLinkSent: (linkSent: boolean) => void;
+  currentStep: StepsAllowed;
+  handleCurrentStep: (step: StepsAllowed) => void;
 }
 
-export type { AuthenticationProviderProps, AuthenticationContextType };
+export type {
+  AuthenticationProviderProps,
+  StepsAllowed,
+  AuthenticationContextType,
+};
