@@ -1,4 +1,5 @@
 import { Button } from '@/components';
+import { useAuthenticationContext } from '@/contexts';
 import { custom as C } from '@/styles';
 import { DICTIONARY } from '@/utils';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
@@ -6,6 +7,8 @@ import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import * as S from './LinkSent.styles';
 
 export function LinkSent() {
+  const { handleCurrentStep } = useAuthenticationContext();
+
   return (
     <AlertDialog.Root open>
       <AlertDialog.Portal>
@@ -20,6 +23,7 @@ export function LinkSent() {
             variant="large"
             type="button"
             isMuted
+            onClick={() => handleCurrentStep('welcome')}
           >
             {DICTIONARY.BACK}
           </Button>
