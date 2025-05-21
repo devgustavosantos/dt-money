@@ -1,4 +1,4 @@
-import { formats } from '@/utils/formats';
+import { formats } from '@/utils';
 
 import { ValueProps } from './Value.types';
 

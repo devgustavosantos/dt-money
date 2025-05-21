@@ -1,11 +1,10 @@
-import { name as appName, version as appVersion } from '@/../package.json';
+import { others } from './others';
 
 const MIN_EMAIL_LENGTH = 4;
 
 const LOGGED_IN_PARAM = 'loggedIn';
 
-const getLocalStorageKey = (key: string) => `${appName}@${appVersion}:${key}`;
-const EMAIL_KEY = getLocalStorageKey('email');
+const EMAIL_KEY = others.getLocalStorageKey('email');
 
 export const CONSTANTS = {
   MIN_EMAIL_LENGTH,
