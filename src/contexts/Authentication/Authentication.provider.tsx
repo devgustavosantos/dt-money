@@ -1,26 +1,25 @@
 import { useState } from 'react';
 
-import {
-  AuthenticationProviderProps,
-  AllowedSteps,
-} from './Authentication.types';
-import { allowedSteps, CURRENT_STEP_KEY } from './Authentication.utils';
+import { AllowedSteps } from '@/types';
+
+import { AuthenticationProviderProps, StepType } from './Authentication.types';
+import { CURRENT_STEP_KEY } from './Authentication.utils';
 import { AuthenticationContext } from './index';
 
 export function AuthenticationProvider({
   children,
 }: AuthenticationProviderProps) {
-  const [currentStep, setCurrentStep] = useState<AllowedSteps>(() => {
+  const [currentStep, setCurrentStep] = useState<StepType>(() => {
     const stepInStorage = window.localStorage.getItem(CURRENT_STEP_KEY);
 
-    const stepFound = allowedSteps.find(
-      (allowedStep) => allowedStep === stepInStorage,
+    const stepFound = Object.values(AllowedSteps).find(
+      (step) => step === stepInStorage,
     );
 
-    return stepFound ? stepFound : 'welcome';
+    return stepFound ? stepFound : AllowedSteps.WELCOME;
   });
 
-  function handleCurrentStep(step: AllowedSteps) {
+  function handleCurrentStep(step: StepType) {
     setCurrentStep(step);
 
     window.localStorage.setItem(CURRENT_STEP_KEY, step);

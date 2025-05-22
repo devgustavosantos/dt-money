@@ -1,18 +1,18 @@
-import { allowedSteps } from './Authentication.utils';
+import { AllowedSteps } from '@/types';
 
 interface AuthenticationProviderProps {
   children: React.ReactNode;
 }
 
-type AllowedSteps = (typeof allowedSteps)[number];
+type StepType = keyof typeof AllowedSteps;
 
 interface AuthenticationContextType {
-  currentStep: AllowedSteps;
-  handleCurrentStep: (step: AllowedSteps) => void;
+  currentStep: StepType;
+  handleCurrentStep: (step: StepType) => void;
 }
 
 export type {
   AuthenticationProviderProps,
-  AllowedSteps,
   AuthenticationContextType,
+  StepType,
 };

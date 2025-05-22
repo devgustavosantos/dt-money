@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import { useAuthenticationContext } from '@/contexts';
 import { actionCodeSettings, auth } from '@/services';
+import { AllowedSteps } from '@/types';
 import { CONSTANTS, DICTIONARY } from '@/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -28,11 +29,10 @@ export function useSignIn() {
 
     sendSignInLinkToEmail(auth, data.email, actionCodeSettings)
       .then(() => {
-        handleCurrentStep('send');
-
         setRequestError('');
 
         window.localStorage.setItem(CONSTANTS.EMAIL_KEY, data.email);
+        handleCurrentStep(AllowedSteps.SEND);
       })
       .catch((error) => {
         setRequestError(DICTIONARY.REQUEST_ERROR);

@@ -1,6 +1,7 @@
 import { Button } from '@/components';
 import { useAuthenticationContext } from '@/contexts';
 import { custom as C } from '@/styles';
+import { AllowedSteps } from '@/types';
 import { DICTIONARY } from '@/utils';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 
@@ -23,7 +24,7 @@ export function LinkSent() {
             variant="large"
             type="button"
             isMuted
-            onClick={() => handleCurrentStep('welcome')}
+            onClick={() => handleCurrentStep(AllowedSteps.WELCOME)}
           >
             {DICTIONARY.BACK}
           </Button>
