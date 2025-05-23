@@ -13,7 +13,7 @@ const signInFormSchema = z
   })
   .required();
 
-type SignInFormType = z.infer<typeof signInFormSchema>;
+type FormModalType = z.infer<typeof signInFormSchema>;
 
 export { signInFormSchema };
-export type { SignInFormType };
+export type { FormModalType };

@@ -9,6 +9,7 @@ export { Summary } from './Summary';
 export { SearchBar } from './SearchBar';
 export { TransactionsTable } from './TransactionsTable';
 export { Pagination } from './Pagination';
+export { FormModal } from './FormModal';
 export { SignIn } from './SignIn';
 export { SignOut } from './SignOut';
 export { LinkSent } from './LinkSent';

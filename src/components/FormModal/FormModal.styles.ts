@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { CircleNotch } from '@phosphor-icons/react';
 
-const LoginForm = styled.form`
+const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 12rem;
@@ -32,4 +32,4 @@ const CustomCircleNotch = styled(CircleNotch)`
   }
 `;
 
-export { LoginForm, ErrorMessage, CustomCircleNotch };
+export { Form, ErrorMessage, CustomCircleNotch };
