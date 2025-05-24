@@ -3,6 +3,13 @@ import styled from 'styled-components';
 import { BREAKPOINTS } from '@/styles';
 import { SignOut } from '@phosphor-icons/react';
 
+const ButtonsContainer = styled.div`
+  margin-top: 16rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8rem;
+`;
+
 const SignOutButton = styled.button`
   height: 56rem;
   width: 56rem;
@@ -32,4 +39,4 @@ const CustomSignOut = styled(SignOut)`
   }
 `;
 
-export { SignOutButton, CustomSignOut };
+export { ButtonsContainer, SignOutButton, CustomSignOut };

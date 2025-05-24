@@ -31,4 +31,7 @@ export const DICTIONARY = {
   DIFFERENT_DEVICE_DESCRIPTION:
     'Você está acessando de outro dispositivo, por isso confirme seu e-mail para continuar.',
   CONFIRM: 'Confirmar',
+  CANCEL: 'Cancelar',
+  ARE_YOU_SURE: 'Você tem certeza?',
+  ARE_YOU_SURE_DESCRIPTION: 'Você está prestes a sair da sua conta.',
 };

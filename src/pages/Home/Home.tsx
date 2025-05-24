@@ -5,6 +5,7 @@ import {
   Pagination,
   Footer,
   Authentication,
+  SignOut,
 } from '@/components';
 
 import * as S from './Home.styles';
@@ -27,6 +28,7 @@ export function Home() {
         />
       </S.Main>
       <Authentication />
+      <SignOut />
       <Footer />
     </S.HomeContainer>
   );
