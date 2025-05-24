@@ -14,4 +14,5 @@ export { SignIn } from './SignIn';
 export { SignOut } from './SignOut';
 export { LinkSent } from './LinkSent';
 export { LoggedIn } from './LoggedIn';
+export { Confirm } from './Confirm';
 export { Authentication } from './Authentication';
