@@ -13,7 +13,11 @@ export function useConfirm() {
   const shouldModalVisible = isALoginAttempt && !emailSaved;
 
   const handleConfirm = useCallback(({ email }: FormModalType) => {
-    return signInWithEmailLink(auth, email, window.location.href);
+    return signInWithEmailLink(auth, email, window.location.href).catch(
+      (error) => {
+        console.info('>>> error', error);
+      },
+    );
   }, []);
 
   useEffect(() => {
