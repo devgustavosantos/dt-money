@@ -1,4 +1,4 @@
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 
 import { AllowedSteps } from '@/types';
@@ -26,6 +26,7 @@ export function useAuthentication() {
 
     return stepFound ?? AllowedSteps.WELCOME;
   });
+  const [userInfos, setUserInfos] = useState<User | null>(null);
 
   function handleCurrentStep(step: StepType) {
     setCurrentStep(step);
@@ -36,18 +37,35 @@ export function useAuthentication() {
   useEffect(() => {
     const auth = getAuth();
 
-    onAuthStateChanged(auth, (user) => {
-      if (!user) return;
+    onAuthStateChanged(
+      auth,
+      (user) => {
+        if (!user) {
+          handleCurrentStep(AllowedSteps.WELCOME);
 
-      handleCurrentStep(AllowedSteps.LOGGED_IN);
+          setUserInfos(null);
 
-      const url = new URL(window.location.href);
-      history.pushState({}, '', url.pathname);
-    });
+          window.localStorage.clear();
+
+          return;
+        }
+
+        handleCurrentStep(AllowedSteps.LOGGED_IN);
+
+        setUserInfos(user);
+
+        const url = new URL(window.location.href);
+        history.pushState({}, '', url.pathname);
+      },
+      (error) => {
+        console.info('>>> error', error);
+      },
+    );
   }, []);
 
   return {
     currentStep,
     handleCurrentStep,
+    userInfos,
   };
 }

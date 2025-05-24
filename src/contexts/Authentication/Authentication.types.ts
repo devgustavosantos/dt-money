@@ -1,3 +1,5 @@
+import { User } from 'firebase/auth';
+
 import { AllowedSteps } from '@/types';
 
 interface AuthenticationProviderProps {
@@ -9,6 +11,7 @@ type StepType = keyof typeof AllowedSteps;
 interface AuthenticationContextType {
   currentStep: StepType;
   handleCurrentStep: (step: StepType) => void;
+  userInfos: User | null;
 }
 
 export type {

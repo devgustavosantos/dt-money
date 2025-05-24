@@ -5,10 +5,12 @@ import { AuthenticationContext } from './index';
 export function AuthenticationProvider({
   children,
 }: AuthenticationProviderProps) {
-  const { currentStep, handleCurrentStep } = useAuthentication();
+  const { currentStep, handleCurrentStep, userInfos } = useAuthentication();
 
   return (
-    <AuthenticationContext.Provider value={{ currentStep, handleCurrentStep }}>
+    <AuthenticationContext.Provider
+      value={{ currentStep, handleCurrentStep, userInfos }}
+    >
       {children}
     </AuthenticationContext.Provider>
   );
