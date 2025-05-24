@@ -4,16 +4,22 @@ import * as Dialog from '@radix-ui/react-dialog';
 import * as S from './Modal.styles';
 import { ModalProps } from './Modal.types';
 
-export function Modal({ trigger, title, description, content }: ModalProps) {
+export function Modal({
+  trigger,
+  title,
+  description,
+  content,
+  isLarge = true,
+}: ModalProps) {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
       <Dialog.Portal>
         <S.CustomOverlay />
-        <S.CustomContent>
+        <S.CustomContent isLarge={isLarge}>
           <S.CustomTitle>{title}</S.CustomTitle>
           {description && (
-            <Dialog.Description>{description}</Dialog.Description>
+            <S.CustomDescription>{description}</S.CustomDescription>
           )}
           {content}
           <S.CustomClose>

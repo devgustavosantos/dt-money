@@ -1,15 +1,21 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { modal } from '@/styles';
 import * as Dialog from '@radix-ui/react-dialog';
+
+import { ModalContentProps } from './Modal.types';
 
 const CustomOverlay = styled(Dialog.Overlay)`
   ${modal.overlay}
 `;
 
-const CustomContent = styled(Dialog.Content)`
+const CustomContent = styled(Dialog.Content)<ModalContentProps>`
   ${modal.content}
-  max-width: 535rem;
+  ${({ isLarge }) =>
+    isLarge &&
+    css`
+      max-width: 538rem;
+    `};
 `;
 
 const CustomClose = styled(Dialog.Close)`
@@ -24,4 +30,14 @@ const CustomTitle = styled(Dialog.Title)`
   ${modal.title}
 `;
 
-export { CustomOverlay, CustomContent, CustomClose, CustomTitle };
+const CustomDescription = styled(Dialog.Description)`
+  ${modal.description}
+`;
+
+export {
+  CustomOverlay,
+  CustomContent,
+  CustomClose,
+  CustomTitle,
+  CustomDescription,
+};

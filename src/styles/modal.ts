@@ -28,6 +28,7 @@ const content = css`
   padding: 48rem;
   border-radius: 6rem;
   box-shadow: 0 4rem 32rem rgba(0, 0, 0, 80%);
+  max-width: 380rem;
 
   @media only screen and (max-width: ${BREAKPOINTS.SMALL}) {
     max-width: initial;
@@ -40,7 +41,6 @@ const content = css`
 
 const AlertDialogContent = styled(AlertDialog.Content)`
   ${content}
-  max-width: 380rem;
 `;
 
 const title = css`
@@ -58,15 +58,20 @@ const AlertDialogTitle = styled(AlertDialog.Title)`
   ${title}
 `;
 
-const AlertDialogDescription = styled(AlertDialog.Description)`
+const description = css`
   font-size: 14rem;
   line-height: 160%;
+`;
+
+const AlertDialogDescription = styled(AlertDialog.Description)`
+  ${description}
 `;
 
 const modal = {
   overlay,
   content,
   title,
+  description,
 };
 
 const custom = {
