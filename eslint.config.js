@@ -55,7 +55,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['**/*.styles.ts'],
+    files: ['**/*.styles.ts', '**/*.hook.ts'],
     rules: {
       'max-lines': ['error', 100],
     },
