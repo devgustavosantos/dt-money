@@ -3,11 +3,14 @@ import { custom as C } from '@/styles';
 import { DICTIONARY } from '@/utils';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 
+import { useLoggedIn } from './LoggedIn.hook';
 import * as S from './LoggedIn.styles';
 
 export function LoggedIn() {
+  const { isOpen, handleIsOpen } = useLoggedIn();
+
   return (
-    <AlertDialog.Root open>
+    <AlertDialog.Root open={isOpen}>
       <AlertDialog.Portal>
         <C.AlertDialogOverlay />
         <C.AlertDialogContent>
@@ -19,6 +22,7 @@ export function LoggedIn() {
           <Button
             variant="large"
             type="button"
+            onClick={handleIsOpen}
           >
             {DICTIONARY.START}
           </Button>
