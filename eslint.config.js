@@ -51,6 +51,13 @@ export default tseslint.config(
           argsIgnorePattern: '^_',
         },
       ],
+      'max-lines': ['error', 50],
+    },
+  },
+  {
+    files: ['**/*.styles.ts', '**/*.hook.ts'],
+    rules: {
+      'max-lines': ['error', 100],
     },
   },
 );
