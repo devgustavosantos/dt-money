@@ -40,22 +40,7 @@ export function useAuthentication() {
     onAuthStateChanged(
       auth,
       (user) => {
-        if (!user) {
-          handleCurrentStep(AllowedSteps.WELCOME);
-
-          setUserInfos(null);
-
-          window.localStorage.clear();
-
-          return;
-        }
-
-        handleCurrentStep(AllowedSteps.LOGGED_IN);
-
         setUserInfos(user);
-
-        const url = new URL(window.location.href);
-        history.pushState({}, '', url.pathname);
       },
       (error) => {
         console.info('>>> error', error);
