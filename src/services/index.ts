@@ -1,1 +1,1 @@
-export { actionCodeSettings, auth } from './firebase';
+export { auth } from './firebase';

@@ -4,8 +4,6 @@ import {
   TransactionsTable,
   Pagination,
   Footer,
-  Authentication,
-  SignOut,
 } from '@/components';
 
 import * as S from './Home.styles';
@@ -27,8 +25,6 @@ export function Home() {
           quantity={3}
         />
       </S.Main>
-      <Authentication />
-      <SignOut />
       <Footer />
     </S.HomeContainer>
   );
