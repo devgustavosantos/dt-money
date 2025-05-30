@@ -10,6 +10,8 @@ export const DICTIONARY = {
   INCOME: 'Entrada',
   OUTCOME: 'Saída',
   WELCOME: 'Seja bem-vindo!',
+  WELCOME_DESCRIPTION: 'Faça login para acessar sua conta.',
+  ACCESS: 'Acessar com o Google',
   LOGOUT: 'Sair',
   REQUEST_ERROR: 'Ocorreu um erro interno! Tente novamente mais tarde.',
   CONFIRM: 'Confirmar',

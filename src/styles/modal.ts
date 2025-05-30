@@ -61,6 +61,7 @@ const AlertDialogTitle = styled(AlertDialog.Title)`
 const description = css`
   font-size: 14rem;
   line-height: 160%;
+  margin-bottom: 12rem;
 `;
 
 const AlertDialogDescription = styled(AlertDialog.Description)`

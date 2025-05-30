@@ -1,3 +1,11 @@
+import { signInWithGooglePopup } from '@/services';
+
 export function useSignIn() {
-  return {};
+  function handleSignIn() {
+    signInWithGooglePopup().catch((error) => {
+      console.info('>>> handleSignIn error', error);
+    });
+  }
+
+  return { handleSignIn };
 }

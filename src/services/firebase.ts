@@ -1,5 +1,10 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, connectAuthEmulator } from 'firebase/auth';
+import {
+  getAuth,
+  connectAuthEmulator,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from 'firebase/auth';
 
 import config from '@/../firebase.json';
 
@@ -16,8 +21,15 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 
+const provider = new GoogleAuthProvider();
+provider.setCustomParameters({
+  prompt: 'select_account ',
+});
+
+const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+
 if (import.meta.env.DEV) {
   connectAuthEmulator(auth, `http://localhost:${config.emulators.auth.port}`);
 }
 
-export { auth };
+export { auth, signInWithGooglePopup };
