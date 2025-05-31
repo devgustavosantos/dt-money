@@ -2,7 +2,7 @@ import { SignIn, SignOut } from '@/components/';
 import { useAuthenticationContext } from '@/contexts';
 
 export function Authentication() {
-  const { userInfos } = useAuthenticationContext();
+  const { isUserAuthenticated } = useAuthenticationContext();
 
-  return userInfos ? <SignOut /> : <SignIn />;
+  return isUserAuthenticated ? <SignOut /> : <SignIn />;
 }
