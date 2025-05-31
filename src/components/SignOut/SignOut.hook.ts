@@ -1,23 +1,23 @@
-import { getAuth, signOut } from 'firebase/auth';
+import { signOut } from 'firebase/auth';
+import { useState } from 'react';
 
-import { useAuthenticationContext } from '@/contexts';
-import { AllowedSteps } from '@/types';
+import { auth } from '@/services';
+import { handlePromises } from '@/utils';
 
 export function useSignOut() {
-  const auth = getAuth();
-  const { handleCurrentStep } = useAuthenticationContext();
+  const [isLoading, setIsLoading] = useState(false);
 
-  function handleSignOut() {
-    signOut(auth)
-      .then(() => {
-        handleCurrentStep(AllowedSteps.WELCOME);
+  async function handleSignOut() {
+    setIsLoading(true);
 
-        window.localStorage.clear();
-      })
-      .catch((error) => {
-        console.info('>>> error', error);
-      });
+    const { error } = await handlePromises(signOut, auth);
+
+    setIsLoading(false);
+
+    if (!error) return;
+
+    console.info('>>> handleSignOut error:', error);
   }
 
-  return { handleSignOut };
+  return { handleSignOut, isLoading };
 }

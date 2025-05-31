@@ -1,19 +1,25 @@
-import { sendSignInLinkToEmail } from 'firebase/auth';
+import { useState } from 'react';
 
-import { useAuthenticationContext } from '@/contexts';
-import { actionCodeSettings, auth } from '@/services';
-import { AllowedSteps, FormModalType } from '@/types';
-import { CONSTANTS } from '@/utils';
+import { signInWithGooglePopup } from '@/services';
+import { DICTIONARY, handlePromises } from '@/utils';
 
 export function useSignIn() {
-  const { handleCurrentStep } = useAuthenticationContext();
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSignIn = ({ email }: FormModalType) =>
-    sendSignInLinkToEmail(auth, email, actionCodeSettings).then(() => {
-      window.localStorage.setItem(CONSTANTS.EMAIL_KEY, email);
+  async function handleSignIn() {
+    setIsLoading(true);
 
-      handleCurrentStep(AllowedSteps.SEND);
-    });
+    const { error } = await handlePromises(signInWithGooglePopup);
 
-  return { handleSignIn };
+    setIsLoading(false);
+
+    if (!error) return;
+
+    setErrorMessage(DICTIONARY.REQUEST_ERROR);
+
+    console.info('>>> handleSignIn error:', error);
+  }
+
+  return { handleSignIn, isLoading, errorMessage };
 }

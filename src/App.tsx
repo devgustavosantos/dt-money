@@ -1,5 +1,6 @@
 import { ThemeProvider } from 'styled-components';
 
+import { Authentication } from './components';
 import { AuthenticationProvider } from './contexts';
 import { Home } from './pages';
 import { COLORS, Styling } from './styles';
@@ -10,6 +11,7 @@ export function App() {
       <Styling />
       <AuthenticationProvider>
         <Home />
+        <Authentication />
       </AuthenticationProvider>
     </ThemeProvider>
   );

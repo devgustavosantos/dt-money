@@ -1,7 +1,8 @@
-import { useAuthentication } from './Authentication.hook';
+import { SignIn, SignOut } from '@/components/';
+import { useAuthenticationContext } from '@/contexts';
 
 export function Authentication() {
-  const { StepToRender } = useAuthentication();
+  const { userInfos } = useAuthenticationContext();
 
-  return <StepToRender />;
+  return userInfos ? <SignOut /> : <SignIn />;
 }
