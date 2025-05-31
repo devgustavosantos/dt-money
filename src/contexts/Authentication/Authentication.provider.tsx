@@ -5,10 +5,10 @@ import { AuthenticationContext } from './index';
 export function AuthenticationProvider({
   children,
 }: AuthenticationProviderProps) {
-  const { userInfos } = useAuthentication();
+  const { isUserAuthenticated } = useAuthentication();
 
   return (
-    <AuthenticationContext.Provider value={{ userInfos }}>
+    <AuthenticationContext.Provider value={{ isUserAuthenticated }}>
       {children}
     </AuthenticationContext.Provider>
   );
