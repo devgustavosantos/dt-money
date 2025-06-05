@@ -1,5 +1,3 @@
-/* eslint-disable max-lines */
-
 export const transactionsExample = [
   {
     id: 1,

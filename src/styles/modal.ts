@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 import styled, { css } from 'styled-components';
 
 import * as AlertDialog from '@radix-ui/react-alert-dialog';

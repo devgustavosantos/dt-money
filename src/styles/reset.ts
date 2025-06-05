@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 import { createGlobalStyle } from 'styled-components';
 
 export const Reset = createGlobalStyle`
