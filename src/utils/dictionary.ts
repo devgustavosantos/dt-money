@@ -1,3 +1,5 @@
+import { CONSTANTS } from './constants';
+
 export const DICTIONARY = {
   NEW_TRANSACTION: 'Nova transação',
   COPYRIGHT: '© 2025 - Todos os direitos reservados.',
@@ -5,10 +7,14 @@ export const DICTIONARY = {
   SEARCH: 'Buscar',
   REGISTER: 'Cadastrar',
   DESCRIPTION: 'Descrição',
+  DESCRIPTION_ERROR: `A descrição deve conter ao menos ${CONSTANTS.MIN.DESCRIPTION} caracteres.`,
   PRICE: 'Preço',
+  PRICE_ERROR: `O preço deve ser ao menos ${CONSTANTS.MIN.PRICE}.`,
   CATEGORY: 'Categoria',
+  CATEGORY_ERROR: `A categoria deve conter ao menos ${CONSTANTS.MIN.CATEGORY} caracteres.`,
   INCOME: 'Entrada',
   OUTCOME: 'Saída',
+  INCOME_OUTCOME_ERROR: 'É obrigatório informar se é uma entrada ou saída.',
   WELCOME: 'Seja bem-vindo!',
   WELCOME_DESCRIPTION: 'Faça login para acessar sua conta.',
   ACCESS: 'Acessar com o Google',
@@ -18,4 +24,5 @@ export const DICTIONARY = {
   CANCEL: 'Cancelar',
   ARE_YOU_SURE: 'Você tem certeza?',
   ARE_YOU_SURE_DESCRIPTION: 'Você está prestes a sair da sua conta.',
+  NEW_TRANSACTION_SUCCESS: 'Nova transação cadastrada com sucesso.',
 };

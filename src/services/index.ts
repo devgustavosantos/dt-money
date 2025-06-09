@@ -1,1 +1,1 @@
-export { auth, signInWithGooglePopup } from './firebase';
+export { auth, db, signInWithGooglePopup } from './firebase';

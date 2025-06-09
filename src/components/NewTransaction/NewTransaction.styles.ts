@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { BREAKPOINTS } from '@/styles';
 import * as RadioGroup from '@radix-ui/react-radio-group';
 
+import { EntryProps } from './NewTransaction.types';
+
 const EntriesContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,8 +16,33 @@ const EntriesContainer = styled.div`
   }
 `;
 
-const TransactionTypeContainer = styled(RadioGroup.Root)`
+const EntryWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+`;
+
+const Entry = styled.input<EntryProps>`
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  ${({ hasError, theme }) =>
+    hasError && `outline: 1rem solid ${theme.SECONDARY_800}`};
+`;
+
+const EntryError = styled.p`
+  color: ${({ theme }) => theme.SECONDARY_800};
+  font-size: 12rem;
+`;
+
+const TransactionTypeContainer = styled(EntryWrapper)`
   margin-bottom: 40rem;
+`;
+
+const TransactionTypeWrapper = styled(RadioGroup.Root)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16rem;
@@ -25,6 +52,7 @@ const TransactionTypeText = styled.span`
   font-size: 16rem;
   color: ${({ theme }) => theme.BASE_400};
   line-height: 160%;
+  user-select: none;
 `;
 
 const TransactionTypeButton = styled(RadioGroup.Item)`
@@ -67,9 +95,18 @@ const TransactionTypeButton = styled(RadioGroup.Item)`
   }
 `;
 
+const Message = styled.p`
+  margin-top: 12rem;
+`;
+
 export {
   EntriesContainer,
+  EntryWrapper,
+  Entry,
+  EntryError,
   TransactionTypeContainer,
+  TransactionTypeWrapper,
   TransactionTypeButton,
   TransactionTypeText,
+  Message,
 };

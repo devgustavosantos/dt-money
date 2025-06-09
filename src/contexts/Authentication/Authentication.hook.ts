@@ -15,6 +15,12 @@ export function useAuthentication() {
     },
   );
 
+  function removeUserAuthentication() {
+    setIsUserAuthenticated(false);
+
+    localStorage.removeItem(others.IS_AUTHENTICATED);
+  }
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setIsUserAuthenticated(!!user);
@@ -25,5 +31,6 @@ export function useAuthentication() {
 
   return {
     isUserAuthenticated,
+    removeUserAuthentication,
   };
 }

@@ -5,6 +5,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from 'firebase/auth';
+import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
 
 import config from '@/../firebase.json';
 
@@ -20,6 +21,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
+const db = getFirestore();
 
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({
@@ -30,6 +32,7 @@ const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 
 if (import.meta.env.DEV) {
   connectAuthEmulator(auth, `http://localhost:${config.emulators.auth.port}`);
+  connectFirestoreEmulator(db, '127.0.0.1', config.emulators.firestore.port);
 }
 
-export { auth, signInWithGooglePopup };
+export { auth, db, signInWithGooglePopup };
