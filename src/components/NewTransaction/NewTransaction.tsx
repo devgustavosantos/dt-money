@@ -1,28 +1,23 @@
-import { Controller, useForm } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 
-import { Button } from '@/components/Button';
+import { Button } from '@/components';
+import { Spinner } from '@/styles';
 import { DICTIONARY } from '@/utils';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowCircleDown, ArrowCircleUp } from '@phosphor-icons/react';
 
 import { useNewTransaction } from './NewTransaction.hook';
 import * as S from './NewTransaction.styles';
-import {
-  newTransactionFormSchema,
-  NewTransactionFormSchema,
-} from './NewTransaction.types';
 
 export function NewTransaction() {
   const {
-    register,
-    handleSubmit,
+    onSubmit,
+    isLoading,
     control,
-    formState: { errors },
-  } = useForm<NewTransactionFormSchema>({
-    resolver: zodResolver(newTransactionFormSchema),
-  });
-
-  const { onSubmit } = useNewTransaction();
+    errors,
+    handleSubmit,
+    register,
+    message,
+  } = useNewTransaction();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -87,10 +82,12 @@ export function NewTransaction() {
       <Button
         variant="large"
         type="submit"
-        disabled={!!Object.entries(errors).length}
+        disabled={!!Object.entries(errors).length || isLoading}
       >
-        {DICTIONARY.REGISTER}
+        {isLoading && <Spinner />}
+        {!isLoading && DICTIONARY.REGISTER}
       </Button>
+      <S.Message>{message}</S.Message>
     </form>
   );
 }

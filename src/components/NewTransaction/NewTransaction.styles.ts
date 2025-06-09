@@ -95,6 +95,10 @@ const TransactionTypeButton = styled(RadioGroup.Item)`
   }
 `;
 
+const Message = styled.p`
+  margin-top: 12rem;
+`;
+
 export {
   EntriesContainer,
   EntryWrapper,
@@ -104,4 +108,5 @@ export {
   TransactionTypeWrapper,
   TransactionTypeButton,
   TransactionTypeText,
+  Message,
 };

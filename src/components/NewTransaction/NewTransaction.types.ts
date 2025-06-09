@@ -2,7 +2,7 @@ import * as z from 'zod';
 
 import { CONSTANTS, DICTIONARY } from '@/utils';
 
-const newTransactionFormSchema = z.object({
+const newTransactionFormValidationSchema = z.object({
   description: z
     .string()
     .min(CONSTANTS.MIN.DESCRIPTION, { message: DICTIONARY.DESCRIPTION_ERROR }),
@@ -17,11 +17,13 @@ const newTransactionFormSchema = z.object({
     .min(CONSTANTS.MIN.CATEGORY, { message: DICTIONARY.CATEGORY_ERROR }),
 });
 
-type NewTransactionFormSchema = z.infer<typeof newTransactionFormSchema>;
+type NewTransactionFormInputs = z.infer<
+  typeof newTransactionFormValidationSchema
+>;
 
 interface EntryProps {
   hasError?: boolean;
 }
 
-export { newTransactionFormSchema };
-export type { NewTransactionFormSchema, EntryProps };
+export { newTransactionFormValidationSchema };
+export type { NewTransactionFormInputs, EntryProps };

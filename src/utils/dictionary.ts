@@ -24,4 +24,5 @@ export const DICTIONARY = {
   CANCEL: 'Cancelar',
   ARE_YOU_SURE: 'Você tem certeza?',
   ARE_YOU_SURE_DESCRIPTION: 'Você está prestes a sair da sua conta.',
+  NEW_TRANSACTION_SUCCESS: 'Nova transação cadastrada com sucesso.',
 };
