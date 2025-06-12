@@ -25,4 +25,6 @@ export const DICTIONARY = {
   ARE_YOU_SURE: 'Você tem certeza?',
   ARE_YOU_SURE_DESCRIPTION: 'Você está prestes a sair da sua conta.',
   NEW_TRANSACTION_SUCCESS: 'Nova transação cadastrada com sucesso.',
+  TRANSACTIONS_ERROR: 'Não foi possível carregar algumas transações.',
+  NO_TRANSACTIONS: 'Você ainda não possui transações no momento.',
 };

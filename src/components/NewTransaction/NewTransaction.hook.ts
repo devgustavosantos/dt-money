@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import { useAuthenticationContext } from '@/contexts';
 import { auth, db } from '@/services';
-import { DICTIONARY } from '@/utils';
+import { CONSTANTS, DICTIONARY } from '@/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import {
@@ -45,14 +45,17 @@ export function useNewTransaction() {
 
     setIsLoading(true);
 
-    const newRegister = await addDoc(collection(db, 'transactions'), {
-      userId: currentUser.uid,
-      createdAt: serverTimestamp(),
-      type,
-      description,
-      price,
-      category,
-    }).catch((error) => {
+    const newRegister = await addDoc(
+      collection(db, CONSTANTS.TRANSACTION_COLLECTION_NAME),
+      {
+        userId: currentUser.uid,
+        createdAt: serverTimestamp(),
+        type,
+        description,
+        price,
+        category,
+      },
+    ).catch((error) => {
       console.info('>>> newRegister error', error);
 
       setMessage(DICTIONARY.REQUEST_ERROR);

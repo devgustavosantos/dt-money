@@ -1,13 +1,15 @@
+import { useTransactionsContext } from '@/contexts';
 import { formats } from '@/utils';
 
-import { transactionsExample } from './TransactionsTable.data';
-
 export function useTransactionsTable() {
-  const formattedTransactions = transactionsExample.map((transaction) => ({
+  const { transactions, transactionsError, isTransactionsLoading } =
+    useTransactionsContext();
+
+  const formattedTransactions = transactions.map((transaction) => ({
     ...transaction,
-    date: formats.date.format(new Date(transaction.date)),
-    amount: formats.money.format(transaction.amount),
+    createdAt: formats.date.format(new Date(transaction.createdAt)),
+    price: formats.money.format(transaction.price),
   }));
 
-  return { formattedTransactions };
+  return { formattedTransactions, transactionsError, isTransactionsLoading };
 }
