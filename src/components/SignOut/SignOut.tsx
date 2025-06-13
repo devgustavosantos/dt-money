@@ -1,5 +1,4 @@
 import { Button, Modal } from '@/components';
-import { Spinner } from '@/styles';
 import { DICTIONARY } from '@/utils';
 import * as Dialog from '@radix-ui/react-dialog';
 
@@ -13,7 +12,7 @@ export function SignOut() {
     <Modal
       content={
         <>
-          {isLoading && <Spinner style={{ margin: '0 auto' }} />}
+          {isLoading && <S.SignOutSpinner />}
           {!isLoading && (
             <S.ButtonsContainer>
               <Button
