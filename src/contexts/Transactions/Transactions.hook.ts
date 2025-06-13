@@ -1,5 +1,5 @@
-import { collection, getDocs, query, where } from 'firebase/firestore';
-import { useCallback, useEffect, useState } from 'react';
+import { collection, onSnapshot, query, where } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
 
 import { auth, db } from '@/services';
 import { Transaction, transactionSchema } from '@/types';
@@ -15,10 +15,10 @@ export function useTransactions() {
   const [transactions, setTransactions] = useState<Transaction[]>(() =>
     isUserAuthenticated ? [] : transactionsExample,
   );
-  const [isTransactionsLoading, setIsTransactionsLoading] = useState(false);
+  const [isTransactionsLoading, setIsTransactionsLoading] = useState(true);
   const [transactionsError, setTransactionsError] = useState('');
 
-  const getTransactions = useCallback(async () => {
+  useEffect(() => {
     const { currentUser } = auth;
 
     if (!currentUser) {
@@ -34,39 +34,48 @@ export function useTransactions() {
 
     setIsTransactionsLoading(true);
 
-    const querySnapshot = await getDocs(transactionsQuery).catch((error) => {
-      console.info('>>> getTransactions error', error);
-    });
+    const unsubscribe = onSnapshot(
+      transactionsQuery,
+      (querySnapshot) => {
+        setIsTransactionsLoading(false);
 
-    setIsTransactionsLoading(false);
+        const registers = querySnapshot.docs
+          .map((doc) => {
+            if (!doc.data().createdAt?.seconds) return;
 
-    if (!querySnapshot) return;
+            return {
+              id: doc.id,
+              ...doc.data(),
+              createdAt: new Date(doc.data().createdAt.seconds * 1000),
+            };
+          })
+          .filter((register) => !!register);
 
-    const registers = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-      createdAt: new Date(doc.data().createdAt.seconds * 1000),
-    }));
+        const validatedRegisters = registers
+          .map((register) => transactionSchema.safeParse(register).data)
+          .filter((validatedRegister) => !!validatedRegister);
 
-    const validatedRegisters = registers
-      .map((register) => transactionSchema.safeParse(register).data)
-      .filter((validatedRegister) => validatedRegister !== undefined);
+        if (validatedRegisters.length !== registers.length) {
+          setTransactionsError(DICTIONARY.TRANSACTIONS_ERROR);
+        }
 
-    if (validatedRegisters.length !== registers.length) {
-      setTransactionsError(DICTIONARY.TRANSACTIONS_ERROR);
-    }
+        setTransactions(validatedRegisters);
 
-    setTransactions(validatedRegisters);
-  }, [removeUserAuthentication]);
+        if (!isTransactionsLoading) return;
 
-  useEffect(() => {
-    getTransactions();
-  }, [getTransactions]);
+        setIsTransactionsLoading(false);
+      },
+      (error) => {
+        console.info('>>> onSnapshot error', error);
+      },
+    );
+
+    return () => unsubscribe();
+  }, [isTransactionsLoading, removeUserAuthentication]);
 
   return {
     transactions,
     isTransactionsLoading,
     transactionsError,
-    getTransactions,
   };
 }
