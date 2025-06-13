@@ -8,6 +8,7 @@ interface TransactionsContextType {
   transactions: Transaction[];
   isTransactionsLoading: boolean;
   transactionsError: string;
+  getTransactions: () => void;
 }
 
 export type { TransactionsProviderProps, TransactionsContextType };
