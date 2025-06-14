@@ -18,6 +18,10 @@ export function useTransactions() {
   const [isTransactionsLoading, setIsTransactionsLoading] = useState(false);
   const [transactionsError, setTransactionsError] = useState('');
 
+  function createTransaction(transaction: Transaction) {
+    setTransactions((prevState) => [...prevState, transaction]);
+  }
+
   useEffect(() => {
     async function getTransactions() {
       const { currentUser } = auth;
@@ -63,5 +67,10 @@ export function useTransactions() {
     getTransactions();
   }, [removeUserAuthentication]);
 
-  return { transactions, isTransactionsLoading, transactionsError };
+  return {
+    transactions,
+    isTransactionsLoading,
+    transactionsError,
+    createTransaction,
+  };
 }
