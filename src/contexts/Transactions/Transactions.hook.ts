@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDocs, orderBy, query, where } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 
 import { db } from '@/services';
@@ -18,7 +18,7 @@ export function useTransactions() {
   const [transactionsError, setTransactionsError] = useState('');
 
   function createTransaction(transaction: Transaction) {
-    setTransactions((prevState) => [...prevState, transaction]);
+    setTransactions((prevState) => [transaction, ...prevState]);
   }
 
   function resetTransactions() {
@@ -32,6 +32,7 @@ export function useTransactions() {
       const transactionsQuery = query(
         collection(db, CONSTANTS.TRANSACTION_COLLECTION_NAME),
         where('userId', '==', userInfos.uid),
+        orderBy('createdAt', 'desc'),
       );
 
       setIsTransactionsLoading(true);
