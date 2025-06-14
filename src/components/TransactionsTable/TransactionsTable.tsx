@@ -5,13 +5,19 @@ import { useTransactionsTable } from './TransactionsTable.hook';
 import * as S from './TransactionsTable.styles';
 
 export function TransactionsTable() {
-  const { formattedTransactions, transactionsError, isTransactionsLoading } =
-    useTransactionsTable();
+  const {
+    formattedTransactions,
+    transactionsError,
+    isTransactionsLoading,
+    shouldRenderTable,
+    shouldRenderNoTransactions,
+    shouldRenderTransactionsError,
+  } = useTransactionsTable();
 
   return (
     <S.TransactionsTableContainer isLoading={isTransactionsLoading}>
       {isTransactionsLoading && <S.TransactionsSpinner />}
-      {!isTransactionsLoading && !!formattedTransactions.length && (
+      {shouldRenderTable && (
         <S.Table>
           <S.Body>
             {formattedTransactions.map(
@@ -36,12 +42,10 @@ export function TransactionsTable() {
           </S.Body>
         </S.Table>
       )}
-      {!isTransactionsLoading && !formattedTransactions.length && (
+      {shouldRenderNoTransactions && (
         <S.NoTransactions>{DICTIONARY.NO_TRANSACTIONS}</S.NoTransactions>
       )}
-      {!isTransactionsLoading && transactionsError && (
-        <Error>{transactionsError}</Error>
-      )}
+      {shouldRenderTransactionsError && <Error>{transactionsError}</Error>}
     </S.TransactionsTableContainer>
   );
 }

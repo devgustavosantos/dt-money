@@ -11,5 +11,19 @@ export function useTransactionsTable() {
     price: formats.money.format(transaction.price),
   }));
 
-  return { formattedTransactions, transactionsError, isTransactionsLoading };
+  const shouldRenderTable =
+    !isTransactionsLoading && !!formattedTransactions.length;
+  const shouldRenderNoTransactions =
+    !isTransactionsLoading && !formattedTransactions.length;
+  const shouldRenderTransactionsError =
+    !isTransactionsLoading && transactionsError;
+
+  return {
+    formattedTransactions,
+    transactionsError,
+    isTransactionsLoading,
+    shouldRenderTable,
+    shouldRenderNoTransactions,
+    shouldRenderTransactionsError,
+  };
 }
