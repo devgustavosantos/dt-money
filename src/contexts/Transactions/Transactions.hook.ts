@@ -37,7 +37,7 @@ export function useTransactions() {
       setIsTransactionsLoading(true);
 
       const querySnapshot = await getDocs(transactionsQuery).catch((error) => {
-        console.info('>>> getTransactions error', error);
+        console.warn('>>> getTransactions error', error);
       });
 
       setIsTransactionsLoading(false);

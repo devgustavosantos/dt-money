@@ -23,7 +23,7 @@ export function useSignOut() {
 
     if (!error) return;
 
-    console.info('>>> handleSignOut error:', error);
+    console.warn('>>> handleSignOut error:', error);
   }
 
   return { handleSignOut, isLoading };

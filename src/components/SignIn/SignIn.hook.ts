@@ -18,7 +18,7 @@ export function useSignIn() {
 
     setErrorMessage(DICTIONARY.REQUEST_ERROR);
 
-    console.info('>>> handleSignIn error:', error);
+    console.warn('>>> handleSignIn error:', error);
   }
 
   return { handleSignIn, isLoading, errorMessage };

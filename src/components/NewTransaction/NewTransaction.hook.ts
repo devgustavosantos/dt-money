@@ -52,7 +52,7 @@ export function useNewTransaction() {
         category,
       },
     ).catch((error) => {
-      console.info('>>> newRegister error', error);
+      console.warn('>>> newRegister error', error);
 
       setMessage(DICTIONARY.REQUEST_ERROR);
     });
