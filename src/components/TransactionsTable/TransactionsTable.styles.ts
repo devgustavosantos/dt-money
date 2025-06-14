@@ -102,7 +102,7 @@ const TransactionsSpinner = styled(Spinner)`
 `;
 
 const NoTransactions = styled.p`
-  font-size: 18rem;
+  font-size: 20rem;
 `;
 
 export {

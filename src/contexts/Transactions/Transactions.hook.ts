@@ -1,5 +1,5 @@
-import { collection, onSnapshot, query, where } from 'firebase/firestore';
-import { useEffect, useState } from 'react';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { useCallback, useEffect, useState } from 'react';
 
 import { auth, db } from '@/services';
 import { Transaction, transactionSchema } from '@/types';
@@ -15,10 +15,10 @@ export function useTransactions() {
   const [transactions, setTransactions] = useState<Transaction[]>(() =>
     isUserAuthenticated ? [] : transactionsExample,
   );
-  const [isTransactionsLoading, setIsTransactionsLoading] = useState(true);
+  const [isTransactionsLoading, setIsTransactionsLoading] = useState(false);
   const [transactionsError, setTransactionsError] = useState('');
 
-  useEffect(() => {
+  const getTransactions = useCallback(async () => {
     const { currentUser } = auth;
 
     if (!currentUser) {
@@ -34,48 +34,39 @@ export function useTransactions() {
 
     setIsTransactionsLoading(true);
 
-    const unsubscribe = onSnapshot(
-      transactionsQuery,
-      (querySnapshot) => {
-        setIsTransactionsLoading(false);
+    const querySnapshot = await getDocs(transactionsQuery).catch((error) => {
+      console.info('>>> getTransactions error', error);
+    });
 
-        const registers = querySnapshot.docs
-          .map((doc) => {
-            if (!doc.data().createdAt?.seconds) return;
+    setIsTransactionsLoading(false);
 
-            return {
-              id: doc.id,
-              ...doc.data(),
-              createdAt: new Date(doc.data().createdAt.seconds * 1000),
-            };
-          })
-          .filter((register) => !!register);
+    if (!querySnapshot) return;
 
-        const validatedRegisters = registers
-          .map((register) => transactionSchema.safeParse(register).data)
-          .filter((validatedRegister) => !!validatedRegister);
+    const registers = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+      createdAt: new Date(doc.data().createdAt.seconds * 1000),
+    }));
 
-        if (validatedRegisters.length !== registers.length) {
-          setTransactionsError(DICTIONARY.TRANSACTIONS_ERROR);
-        }
+    const validatedRegisters = registers
+      .map((register) => transactionSchema.safeParse(register).data)
+      .filter((validatedRegister) => validatedRegister !== undefined);
 
-        setTransactions(validatedRegisters);
+    if (validatedRegisters.length !== registers.length) {
+      setTransactionsError(DICTIONARY.TRANSACTIONS_ERROR);
+    }
 
-        if (!isTransactionsLoading) return;
+    setTransactions(validatedRegisters);
+  }, [removeUserAuthentication]);
 
-        setIsTransactionsLoading(false);
-      },
-      (error) => {
-        console.info('>>> onSnapshot error', error);
-      },
-    );
-
-    return () => unsubscribe();
-  }, [isTransactionsLoading, removeUserAuthentication]);
+  useEffect(() => {
+    getTransactions();
+  }, [getTransactions]);
 
   return {
     transactions,
     isTransactionsLoading,
     transactionsError,
+    getTransactions,
   };
 }
