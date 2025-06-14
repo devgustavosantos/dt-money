@@ -12,8 +12,8 @@ export function App() {
       <AuthenticationProvider>
         <TransactionsProvider>
           <Home />
+          <Authentication />
         </TransactionsProvider>
-        <Authentication />
       </AuthenticationProvider>
     </ThemeProvider>
   );

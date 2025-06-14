@@ -9,6 +9,7 @@ interface TransactionsContextType {
   isTransactionsLoading: boolean;
   transactionsError: string;
   createTransaction: (transaction: Transaction) => void;
+  resetTransactions: () => void;
 }
 
 export type { TransactionsProviderProps, TransactionsContextType };

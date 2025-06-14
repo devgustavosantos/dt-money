@@ -8,6 +8,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     isTransactionsLoading,
     transactionsError,
     createTransaction,
+    resetTransactions,
   } = useTransactions();
 
   return (
@@ -17,6 +18,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
         isTransactionsLoading,
         transactionsError,
         createTransaction,
+        resetTransactions,
       }}
     >
       {children}

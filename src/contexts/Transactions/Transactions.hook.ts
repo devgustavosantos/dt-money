@@ -21,6 +21,10 @@ export function useTransactions() {
     setTransactions((prevState) => [...prevState, transaction]);
   }
 
+  function resetTransactions() {
+    setTransactions(transactionsExample);
+  }
+
   useEffect(() => {
     async function getTransactions() {
       if (!userInfos) return;
@@ -65,5 +69,6 @@ export function useTransactions() {
     isTransactionsLoading,
     transactionsError,
     createTransaction,
+    resetTransactions,
   };
 }
