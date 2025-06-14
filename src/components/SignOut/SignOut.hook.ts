@@ -11,6 +11,8 @@ export function useSignOut() {
   const { resetTransactions } = useTransactionsContext();
 
   async function handleSignOut() {
+    window.scrollTo(0, 0);
+
     setIsLoading(true);
 
     resetTransactions();
