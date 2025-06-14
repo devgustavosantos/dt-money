@@ -1,7 +1,7 @@
 import { ThemeProvider } from 'styled-components';
 
 import { Authentication } from './components';
-import { AuthenticationProvider } from './contexts';
+import { AuthenticationProvider, TransactionsProvider } from './contexts';
 import { Home } from './pages';
 import { COLORS, Styling } from './styles';
 
@@ -10,8 +10,10 @@ export function App() {
     <ThemeProvider theme={COLORS}>
       <Styling />
       <AuthenticationProvider>
-        <Home />
-        <Authentication />
+        <TransactionsProvider>
+          <Home />
+          <Authentication />
+        </TransactionsProvider>
       </AuthenticationProvider>
     </ThemeProvider>
   );

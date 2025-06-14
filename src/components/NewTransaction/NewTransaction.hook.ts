@@ -2,9 +2,9 @@ import { collection, serverTimestamp, addDoc } from 'firebase/firestore';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { useAuthenticationContext } from '@/contexts';
-import { auth, db } from '@/services';
-import { DICTIONARY } from '@/utils';
+import { useAuthenticationContext, useTransactionsContext } from '@/contexts';
+import { db } from '@/services';
+import { CONSTANTS, DICTIONARY } from '@/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import {
@@ -16,7 +16,8 @@ export function useNewTransaction() {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
 
-  const { removeUserAuthentication } = useAuthenticationContext();
+  const { createTransaction } = useTransactionsContext();
+  const { userInfos } = useAuthenticationContext();
 
   const {
     register,
@@ -34,26 +35,24 @@ export function useNewTransaction() {
     category,
     type,
   }: NewTransactionFormInputs) {
-    const { currentUser } = auth;
+    if (!userInfos) return;
+
     setMessage('');
-
-    if (!currentUser) {
-      removeUserAuthentication();
-
-      return;
-    }
 
     setIsLoading(true);
 
-    const newRegister = await addDoc(collection(db, 'transactions'), {
-      userId: currentUser.uid,
-      createdAt: serverTimestamp(),
-      type,
-      description,
-      price,
-      category,
-    }).catch((error) => {
-      console.info('>>> newRegister error', error);
+    const newRegister = await addDoc(
+      collection(db, CONSTANTS.TRANSACTION_COLLECTION_NAME),
+      {
+        userId: userInfos.uid,
+        createdAt: serverTimestamp(),
+        type,
+        description,
+        price,
+        category,
+      },
+    ).catch((error) => {
+      console.warn('>>> newRegister error', error);
 
       setMessage(DICTIONARY.REQUEST_ERROR);
     });
@@ -62,8 +61,15 @@ export function useNewTransaction() {
 
     if (!newRegister) return;
 
+    createTransaction({
+      id: newRegister.id,
+      createdAt: new Date(),
+      type,
+      description,
+      price,
+      category,
+    });
     setMessage(DICTIONARY.NEW_TRANSACTION_SUCCESS);
-
     reset();
   }
 

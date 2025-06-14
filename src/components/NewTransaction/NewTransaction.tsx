@@ -3,7 +3,6 @@ import { Controller } from 'react-hook-form';
 import { Button } from '@/components';
 import { Spinner } from '@/styles';
 import { DICTIONARY } from '@/utils';
-import { ArrowCircleDown, ArrowCircleUp } from '@phosphor-icons/react';
 
 import { useNewTransaction } from './NewTransaction.hook';
 import * as S from './NewTransaction.styles';
@@ -61,18 +60,23 @@ export function NewTransaction() {
           control={control}
           name="type"
           render={({ field }) => (
-            <S.TransactionTypeWrapper onChange={field.onChange}>
-              <S.TransactionTypeButton value="income">
-                <ArrowCircleUp />
-                <S.TransactionTypeText>
-                  {DICTIONARY.INCOME}
-                </S.TransactionTypeText>
+            <S.TransactionTypeWrapper
+              onValueChange={field.onChange}
+              value={field.value}
+            >
+              <S.TransactionTypeButton
+                value="income"
+                data-custom-checked={field.value === 'income'}
+              >
+                <S.CustomArrowCircleUp />
+                {DICTIONARY.INCOME}
               </S.TransactionTypeButton>
-              <S.TransactionTypeButton value="outcome">
-                <ArrowCircleDown />
-                <S.TransactionTypeText>
-                  {DICTIONARY.OUTCOME}
-                </S.TransactionTypeText>
+              <S.TransactionTypeButton
+                value="outcome"
+                data-custom-checked={field.value === 'outcome'}
+              >
+                <S.CustomArrowCircleDown />
+                {DICTIONARY.OUTCOME}
               </S.TransactionTypeButton>
             </S.TransactionTypeWrapper>
           )}
@@ -84,8 +88,7 @@ export function NewTransaction() {
         type="submit"
         disabled={!!Object.entries(errors).length || isLoading}
       >
-        {isLoading && <Spinner />}
-        {!isLoading && DICTIONARY.REGISTER}
+        {isLoading ? <Spinner /> : DICTIONARY.REGISTER}
       </Button>
       <S.Message>{message}</S.Message>
     </form>

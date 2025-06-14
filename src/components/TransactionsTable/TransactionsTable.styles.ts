@@ -1,12 +1,22 @@
 import styled from 'styled-components';
 
 import { Wrapper } from '@/components';
-import { BREAKPOINTS } from '@/styles';
+import { BREAKPOINTS, Spinner } from '@/styles';
+import { TransactionType } from '@/types';
 import { CalendarBlank, TagSimple } from '@phosphor-icons/react';
 
-import { AmountProps } from './TransactionsTable.types';
+import { TransactionsTableContainerProps } from './TransactionsTable.types';
 
-const TransactionsTableContainer = styled(Wrapper)`
+const TransactionsTableContainer = styled(
+  Wrapper,
+)<TransactionsTableContainerProps>`
+  display: grid;
+  place-items: center;
+
+  ${({ isLoading }) => isLoading && 'flex-grow: 1;'};
+`;
+
+const Table = styled.table`
   display: block;
   width: 100%;
 `;
@@ -43,7 +53,7 @@ const Description = styled.td`
   }
 `;
 
-const Amount = styled.td<AmountProps>`
+const Amount = styled.td<TransactionType>`
   color: ${({ theme, type }) =>
     type === 'income' ? theme.PRIMARY_700 : theme.SECONDARY_800};
 
@@ -86,8 +96,18 @@ const CustomCalendarBlank = styled(CalendarBlank)`
   }
 `;
 
+const TransactionsSpinner = styled(Spinner)`
+  margin: auto;
+  font-size: 64rem;
+`;
+
+const NoTransactions = styled.p`
+  font-size: 20rem;
+`;
+
 export {
   TransactionsTableContainer,
+  Table,
   Body,
   Row,
   Description,
@@ -96,4 +116,6 @@ export {
   CustomTagSimple,
   Date,
   CustomCalendarBlank,
+  TransactionsSpinner,
+  NoTransactions,
 };
