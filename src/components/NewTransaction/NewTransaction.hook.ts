@@ -2,7 +2,7 @@ import { collection, serverTimestamp, addDoc } from 'firebase/firestore';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { useAuthenticationContext, useTransactionsContext } from '@/contexts';
+import { useAuthenticationContext } from '@/contexts';
 import { auth, db } from '@/services';
 import { CONSTANTS, DICTIONARY } from '@/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -17,7 +17,6 @@ export function useNewTransaction() {
   const [message, setMessage] = useState('');
 
   const { removeUserAuthentication } = useAuthenticationContext();
-  const { getTransactions } = useTransactionsContext();
 
   const {
     register,
@@ -65,8 +64,6 @@ export function useNewTransaction() {
     setIsLoading(false);
 
     if (!newRegister) return;
-
-    getTransactions();
 
     setMessage(DICTIONARY.NEW_TRANSACTION_SUCCESS);
 

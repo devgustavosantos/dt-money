@@ -3,21 +3,12 @@ import { useTransactions } from './Transactions.hook';
 import { TransactionsProviderProps } from './Transactions.types';
 
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
-  const {
-    transactions,
-    isTransactionsLoading,
-    transactionsError,
-    getTransactions,
-  } = useTransactions();
+  const { transactions, isTransactionsLoading, transactionsError } =
+    useTransactions();
 
   return (
     <TransactionsContext.Provider
-      value={{
-        transactions,
-        isTransactionsLoading,
-        transactionsError,
-        getTransactions,
-      }}
+      value={{ transactions, isTransactionsLoading, transactionsError }}
     >
       {children}
     </TransactionsContext.Provider>
