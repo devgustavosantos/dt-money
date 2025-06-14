@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useAuthenticationContext, useTransactionsContext } from '@/contexts';
-import { auth, db } from '@/services';
+import { db } from '@/services';
 import { CONSTANTS, DICTIONARY } from '@/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -16,8 +16,8 @@ export function useNewTransaction() {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
 
-  const { removeUserAuthentication } = useAuthenticationContext();
   const { createTransaction } = useTransactionsContext();
+  const { userInfos } = useAuthenticationContext();
 
   const {
     register,
@@ -35,21 +35,16 @@ export function useNewTransaction() {
     category,
     type,
   }: NewTransactionFormInputs) {
-    const { currentUser } = auth;
+    if (!userInfos) return;
+
     setMessage('');
-
-    if (!currentUser) {
-      removeUserAuthentication();
-
-      return;
-    }
 
     setIsLoading(true);
 
     const newRegister = await addDoc(
       collection(db, CONSTANTS.TRANSACTION_COLLECTION_NAME),
       {
-        userId: currentUser.uid,
+        userId: userInfos.uid,
         createdAt: serverTimestamp(),
         type,
         description,

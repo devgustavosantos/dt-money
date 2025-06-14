@@ -1,10 +1,12 @@
+import { User } from 'firebase/auth';
+
 interface AuthenticationProviderProps {
   children: React.ReactNode;
 }
 
 interface AuthenticationContextType {
+  userInfos: User | null;
   isUserAuthenticated: boolean;
-  removeUserAuthentication: () => void;
 }
 
 export type { AuthenticationProviderProps, AuthenticationContextType };

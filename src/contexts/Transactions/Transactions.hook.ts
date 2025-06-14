@@ -1,7 +1,7 @@
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 
-import { auth, db } from '@/services';
+import { db } from '@/services';
 import { Transaction, transactionSchema } from '@/types';
 import { CONSTANTS, DICTIONARY } from '@/utils';
 
@@ -9,8 +9,7 @@ import { useAuthenticationContext } from '../Authentication';
 import { transactionsExample } from './Transactions.data';
 
 export function useTransactions() {
-  const { isUserAuthenticated, removeUserAuthentication } =
-    useAuthenticationContext();
+  const { userInfos, isUserAuthenticated } = useAuthenticationContext();
 
   const [transactions, setTransactions] = useState<Transaction[]>(() =>
     isUserAuthenticated ? [] : transactionsExample,
@@ -24,17 +23,11 @@ export function useTransactions() {
 
   useEffect(() => {
     async function getTransactions() {
-      const { currentUser } = auth;
-
-      if (!currentUser) {
-        removeUserAuthentication();
-
-        return;
-      }
+      if (!userInfos) return;
 
       const transactionsQuery = query(
         collection(db, CONSTANTS.TRANSACTION_COLLECTION_NAME),
-        where('userId', '==', currentUser.uid),
+        where('userId', '==', userInfos.uid),
       );
 
       setIsTransactionsLoading(true);
@@ -65,7 +58,7 @@ export function useTransactions() {
     }
 
     getTransactions();
-  }, [removeUserAuthentication]);
+  }, [userInfos]);
 
   return {
     transactions,
