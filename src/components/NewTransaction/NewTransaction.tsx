@@ -15,7 +15,7 @@ export function NewTransaction() {
     errors,
     handleSubmit,
     register,
-    message,
+    messageRendered,
   } = useNewTransaction();
 
   return (
@@ -62,19 +62,13 @@ export function NewTransaction() {
           render={({ field }) => (
             <S.TransactionTypeWrapper
               onValueChange={field.onChange}
-              value={field.value}
+              value={field.value ? field.value : ''}
             >
-              <S.TransactionTypeButton
-                value="income"
-                data-custom-checked={field.value === 'income'}
-              >
+              <S.TransactionTypeButton value="income">
                 <S.CustomArrowCircleUp />
                 {DICTIONARY.INCOME}
               </S.TransactionTypeButton>
-              <S.TransactionTypeButton
-                value="outcome"
-                data-custom-checked={field.value === 'outcome'}
-              >
+              <S.TransactionTypeButton value="outcome">
                 <S.CustomArrowCircleDown />
                 {DICTIONARY.OUTCOME}
               </S.TransactionTypeButton>
@@ -90,7 +84,7 @@ export function NewTransaction() {
       >
         {isLoading ? <Spinner /> : DICTIONARY.REGISTER}
       </Button>
-      <S.Message>{message}</S.Message>
+      <S.Message>{messageRendered}</S.Message>
     </form>
   );
 }

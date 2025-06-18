@@ -72,7 +72,7 @@ const TransactionTypeButton = styled(RadioGroup.Item)`
     filter: brightness(1.4);
   }
 
-  &[data-custom-checked='true'] {
+  &[data-state='checked'] {
     color: ${({ theme }) => theme.BASE_200};
 
     &[value='income'] {

@@ -23,10 +23,11 @@ export function useNewTransaction() {
     register,
     handleSubmit,
     control,
-    formState: { errors },
+    formState: { errors, isDirty, isSubmitted },
     reset,
   } = useForm<NewTransactionFormInputs>({
     resolver: zodResolver(newTransactionFormValidationSchema),
+    delayError: 3000,
   });
 
   async function onSubmit({
@@ -73,6 +74,8 @@ export function useNewTransaction() {
     reset();
   }
 
+  const messageRendered = isDirty && isSubmitted ? '' : message;
+
   return {
     onSubmit,
     isLoading,
@@ -80,6 +83,6 @@ export function useNewTransaction() {
     handleSubmit,
     control,
     errors,
-    message,
+    messageRendered,
   };
 }
