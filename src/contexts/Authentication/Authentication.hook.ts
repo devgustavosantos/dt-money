@@ -1,36 +1,36 @@
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, User } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 
 import { auth } from '@/services';
 import { others } from '@/utils';
 
 export function useAuthentication() {
-  const [isUserAuthenticated, setIsUserAuthenticated] = useState<boolean>(
-    () => {
-      const savedInfo = localStorage.getItem(others.IS_AUTHENTICATED);
+  const [userInfos, setUserInfos] = useState<User | null>(null);
 
-      if (!savedInfo) return false;
+  const isUserAuthenticated = (() => {
+    const savedInfo = localStorage.getItem(others.IS_AUTHENTICATED);
 
-      return !!JSON.parse(savedInfo);
-    },
-  );
-
-  function removeUserAuthentication() {
-    setIsUserAuthenticated(false);
-
-    localStorage.removeItem(others.IS_AUTHENTICATED);
-  }
+    return !savedInfo && !userInfos ? false : true;
+  })();
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      setIsUserAuthenticated(!!user);
+    const unregisterAuthObserver = onAuthStateChanged(auth, (user) => {
+      setUserInfos(user);
 
-      localStorage.setItem(others.IS_AUTHENTICATED, `${!!user}`);
+      if (!user) {
+        localStorage.removeItem(others.IS_AUTHENTICATED);
+
+        return;
+      }
+
+      localStorage.setItem(others.IS_AUTHENTICATED, 'true');
     });
+
+    return () => unregisterAuthObserver();
   }, []);
 
   return {
+    userInfos,
     isUserAuthenticated,
-    removeUserAuthentication,
   };
 }

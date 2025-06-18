@@ -1,5 +1,8 @@
 const MIN = { DESCRIPTION: 3, CATEGORY: 3, PRICE: 1 };
 
+const TRANSACTION_COLLECTION_NAME = 'transactions';
+
 export const CONSTANTS = {
   MIN,
+  TRANSACTION_COLLECTION_NAME,
 };
