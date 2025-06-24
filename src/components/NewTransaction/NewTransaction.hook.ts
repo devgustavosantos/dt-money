@@ -30,6 +30,8 @@ export function useNewTransaction() {
     delayError: 3000,
   });
 
+  console.log('>>> errors', errors);
+
   async function onSubmit({
     description,
     price,

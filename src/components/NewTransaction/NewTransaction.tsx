@@ -6,6 +6,7 @@ import { DICTIONARY } from '@/utils';
 
 import { useNewTransaction } from './NewTransaction.hook';
 import * as S from './NewTransaction.styles';
+import CurrencyInput from 'react-currency-input-field';
 
 export function NewTransaction() {
   const {
@@ -33,12 +34,37 @@ export function NewTransaction() {
           )}
         </S.EntryWrapper>
         <S.EntryWrapper>
-          <S.Entry
+          {/* <S.Entry
             type="number"
             placeholder={DICTIONARY.PRICE}
             {...register('price', { valueAsNumber: true })}
             hasError={!!errors.price}
+          /> */}
+          <Controller
+            name="price"
+            control={control}
+            render={({ field }) => (
+              <CurrencyInput
+                placeholder={DICTIONARY.PRICE}
+                allowNegativeValue={false}
+                decimalsLimit={2}
+                decimalScale={2}
+                fixedDecimalLength={2}
+                value={field.value}
+                onValueChange={
+                  (value, name, values) => field.onChange(values?.float)
+                  // console.log('>>>', { value, name, values })
+                }
+                intlConfig={{
+                  locale: 'pt-BR',
+                  currency: 'BRL',
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                }}
+              />
+            )}
           />
+
           {!!errors.price && (
             <S.EntryError>{errors.price.message}</S.EntryError>
           )}
