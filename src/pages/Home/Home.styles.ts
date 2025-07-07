@@ -12,10 +12,14 @@ const HomeContainer = styled.div`
 const Main = styled.main`
   padding-bottom: 40rem;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 `;
 
 const HomeSearchBar = styled(SearchBar)`
   margin: 12rem auto 24rem;
+  width: 100%;
 
   @media only screen and (max-width: ${BREAKPOINTS.MEDIUM}) {
     margin: 12rem auto;
@@ -26,6 +30,7 @@ const Transactions = styled(Wrapper)`
   display: flex;
   justify-content: space-between;
   margin: 64rem auto 12rem;
+  width: 100%;
 
   @media only screen and (max-width: ${BREAKPOINTS.SMALL}) {
     margin-top: 24rem;

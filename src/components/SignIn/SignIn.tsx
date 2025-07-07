@@ -4,6 +4,7 @@ import { DICTIONARY } from '@/utils';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 
 import { useSignIn } from './SignIn.hook';
+import * as S from './SignIn.styles';
 
 export function SignIn() {
   const { handleSignIn, isLoading, errorMessage } = useSignIn();
@@ -13,12 +14,10 @@ export function SignIn() {
       <AlertDialog.Portal>
         <C.AlertDialogOverlay />
         <C.AlertDialogContent>
-          <C.AlertDialogTitle style={{ textAlign: 'center' }}>
-            {DICTIONARY.WELCOME}
-          </C.AlertDialogTitle>
-          <C.AlertDialogDescription style={{ textAlign: 'center' }}>
+          <S.SignInTitle>{DICTIONARY.WELCOME}</S.SignInTitle>
+          <S.SignInDescription>
             {DICTIONARY.WELCOME_DESCRIPTION}
-          </C.AlertDialogDescription>
+          </S.SignInDescription>
           <Error>{errorMessage}</Error>
           <Button
             variant="medium"

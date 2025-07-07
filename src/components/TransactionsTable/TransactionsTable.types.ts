@@ -1,3 +1,3 @@
-export interface AmountProps {
-  type: 'outcome' | 'income';
+export interface TransactionsTableContainerProps {
+  isLoading: boolean;
 }

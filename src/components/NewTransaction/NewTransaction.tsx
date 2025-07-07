@@ -3,10 +3,10 @@ import { Controller } from 'react-hook-form';
 import { Button } from '@/components';
 import { Spinner } from '@/styles';
 import { DICTIONARY } from '@/utils';
-import { ArrowCircleDown, ArrowCircleUp } from '@phosphor-icons/react';
 
 import { useNewTransaction } from './NewTransaction.hook';
 import * as S from './NewTransaction.styles';
+import CurrencyInput from 'react-currency-input-field';
 
 export function NewTransaction() {
   const {
@@ -16,7 +16,7 @@ export function NewTransaction() {
     errors,
     handleSubmit,
     register,
-    message,
+    messageRendered,
   } = useNewTransaction();
 
   return (
@@ -34,12 +34,37 @@ export function NewTransaction() {
           )}
         </S.EntryWrapper>
         <S.EntryWrapper>
-          <S.Entry
+          {/* <S.Entry
             type="number"
             placeholder={DICTIONARY.PRICE}
             {...register('price', { valueAsNumber: true })}
             hasError={!!errors.price}
+          /> */}
+          <Controller
+            name="price"
+            control={control}
+            render={({ field }) => (
+              <CurrencyInput
+                placeholder={DICTIONARY.PRICE}
+                allowNegativeValue={false}
+                decimalsLimit={2}
+                decimalScale={2}
+                fixedDecimalLength={2}
+                value={field.value}
+                onValueChange={
+                  (value, name, values) => field.onChange(values?.float)
+                  // console.log('>>>', { value, name, values })
+                }
+                intlConfig={{
+                  locale: 'pt-BR',
+                  currency: 'BRL',
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                }}
+              />
+            )}
           />
+
           {!!errors.price && (
             <S.EntryError>{errors.price.message}</S.EntryError>
           )}
@@ -61,18 +86,17 @@ export function NewTransaction() {
           control={control}
           name="type"
           render={({ field }) => (
-            <S.TransactionTypeWrapper onChange={field.onChange}>
+            <S.TransactionTypeWrapper
+              onValueChange={field.onChange}
+              value={field.value ? field.value : ''}
+            >
               <S.TransactionTypeButton value="income">
-                <ArrowCircleUp />
-                <S.TransactionTypeText>
-                  {DICTIONARY.INCOME}
-                </S.TransactionTypeText>
+                <S.CustomArrowCircleUp />
+                {DICTIONARY.INCOME}
               </S.TransactionTypeButton>
               <S.TransactionTypeButton value="outcome">
-                <ArrowCircleDown />
-                <S.TransactionTypeText>
-                  {DICTIONARY.OUTCOME}
-                </S.TransactionTypeText>
+                <S.CustomArrowCircleDown />
+                {DICTIONARY.OUTCOME}
               </S.TransactionTypeButton>
             </S.TransactionTypeWrapper>
           )}
@@ -84,10 +108,9 @@ export function NewTransaction() {
         type="submit"
         disabled={!!Object.entries(errors).length || isLoading}
       >
-        {isLoading && <Spinner />}
-        {!isLoading && DICTIONARY.REGISTER}
+        {isLoading ? <Spinner /> : DICTIONARY.REGISTER}
       </Button>
-      <S.Message>{message}</S.Message>
+      <S.Message>{messageRendered}</S.Message>
     </form>
   );
 }
