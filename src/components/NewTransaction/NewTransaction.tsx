@@ -1,3 +1,5 @@
+/* eslint-disable max-lines */
+import CurrencyInput from 'react-currency-input-field';
 import { Controller } from 'react-hook-form';
 
 import { Button } from '@/components';
@@ -33,11 +35,32 @@ export function NewTransaction() {
           )}
         </S.EntryWrapper>
         <S.EntryWrapper>
-          <S.Entry
-            type="number"
-            placeholder={DICTIONARY.PRICE}
-            {...register('price', { valueAsNumber: true })}
-            hasError={!!errors.price}
+          <Controller
+            name="price"
+            control={control}
+            render={({ formState, field }) => {
+              return (
+                <CurrencyInput
+                  placeholder={DICTIONARY.PRICE}
+                  allowNegativeValue={false}
+                  decimalsLimit={2}
+                  decimalScale={2}
+                  {...(formState.isSubmitSuccessful &&
+                    !formState.isDirty && {
+                    value: '',
+                  })}
+                  onValueChange={(_, __, values) => {
+                    field.onChange(values?.float ? values.float * 100 : 0);
+                  }}
+                  intlConfig={{
+                    locale: 'pt-BR',
+                    currency: 'BRL',
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  }}
+                />
+              );
+            }}
           />
           {!!errors.price && (
             <S.EntryError>{errors.price.message}</S.EntryError>
@@ -84,7 +107,9 @@ export function NewTransaction() {
       >
         {isLoading ? <Spinner /> : DICTIONARY.REGISTER}
       </Button>
-      <S.Message>{messageRendered}</S.Message>
+      {Object.entries(errors).length === 0 && (
+        <S.Message>{messageRendered}</S.Message>
+      )}
     </form>
   );
 }
