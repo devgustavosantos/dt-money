@@ -1,8 +1,6 @@
-/* eslint-disable max-lines */
-import CurrencyInput from 'react-currency-input-field';
 import { Controller } from 'react-hook-form';
 
-import { Button } from '@/components';
+import { Button, Currency } from '@/components';
 import { Spinner } from '@/styles';
 import { DICTIONARY } from '@/utils';
 
@@ -38,29 +36,14 @@ export function NewTransaction() {
           <Controller
             name="price"
             control={control}
-            render={({ formState, field }) => {
-              return (
-                <CurrencyInput
-                  placeholder={DICTIONARY.PRICE}
-                  allowNegativeValue={false}
-                  decimalsLimit={2}
-                  decimalScale={2}
-                  {...(formState.isSubmitSuccessful &&
-                    !formState.isDirty && {
-                    value: '',
-                  })}
-                  onValueChange={(_, __, values) => {
-                    field.onChange(values?.float ? values.float * 100 : 0);
-                  }}
-                  intlConfig={{
-                    locale: 'pt-BR',
-                    currency: 'BRL',
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  }}
-                />
-              );
-            }}
+            render={({ formState: { isDirty, isSubmitSuccessful }, field }) => (
+              <Currency
+                value={isSubmitSuccessful && !isDirty ? '' : undefined}
+                onValueChange={(_, __, values) => {
+                  field.onChange(values?.float ? values.float * 100 : 0);
+                }}
+              />
+            )}
           />
           {!!errors.price && (
             <S.EntryError>{errors.price.message}</S.EntryError>
