@@ -14,7 +14,8 @@ export function useTransactions() {
   const [transactions, setTransactions] = useState<Transaction[]>(() =>
     isUserAuthenticated ? [] : transactionsExample,
   );
-  const [isTransactionsLoading, setIsTransactionsLoading] = useState(false);
+  const [isTransactionsLoading, setIsTransactionsLoading] =
+    useState(isUserAuthenticated);
   const [transactionsError, setTransactionsError] = useState('');
 
   function createTransaction(transaction: Transaction) {
@@ -34,8 +35,6 @@ export function useTransactions() {
         where('userId', '==', userInfos.uid),
         orderBy('createdAt', 'desc'),
       );
-
-      setIsTransactionsLoading(true);
 
       const querySnapshot = await getDocs(transactionsQuery).catch((error) => {
         console.warn('>>> getTransactions error', error);
