@@ -34,4 +34,5 @@ export const DICTIONARY = {
   LAST_EXIT: 'Última saída em',
   BALANCE: 'Saldo',
   LAST_BALANCE: 'Atualizado em',
+  ITEMS: 'item(ns)',
 };

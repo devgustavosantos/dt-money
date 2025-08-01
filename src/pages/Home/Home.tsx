@@ -5,10 +5,14 @@ import {
   Pagination,
   Footer,
 } from '@/components';
+import { useTransactionsContext } from '@/contexts';
+import { DICTIONARY } from '@/utils';
 
 import * as S from './Home.styles';
 
 export function Home() {
+  const { transactions } = useTransactionsContext();
+
   return (
     <S.HomeContainer>
       <Header />
@@ -16,7 +20,9 @@ export function Home() {
         <Summary />
         <S.Transactions>
           <S.TransactionsLabel>Transações</S.TransactionsLabel>
-          <S.TransactionsNumber>4 itens</S.TransactionsNumber>
+          <S.TransactionsNumber>
+            {transactions.length} {DICTIONARY.ITEMS}
+          </S.TransactionsNumber>
         </S.Transactions>
         <S.HomeSearchBar />
         <TransactionsTable />
