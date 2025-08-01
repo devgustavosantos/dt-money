@@ -27,4 +27,11 @@ export const DICTIONARY = {
   NEW_TRANSACTION_SUCCESS: 'Nova transação cadastrada com sucesso.',
   TRANSACTIONS_ERROR: 'Não foi possível carregar algumas transações.',
   NO_TRANSACTIONS: 'Você ainda não possui transações no momento.',
+  UNAVAILABLE: 'Indisponível',
+  ENTRIES: 'Entradas',
+  LAST_ENTRY: 'Última entrada em',
+  EXITS: 'Saídas',
+  LAST_EXIT: 'Última saída em',
+  BALANCE: 'Saldo',
+  LAST_BALANCE: 'Atualizado em',
 };

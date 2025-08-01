@@ -1,33 +1,37 @@
+import { DICTIONARY } from '@/utils';
 import {
   ArrowCircleDown,
   ArrowCircleUp,
   CurrencyCircleDollar,
 } from '@phosphor-icons/react';
 
-export const cards = [
+export const mockCards = [
   {
-    title: 'Entradas',
+    title: DICTIONARY.ENTRIES,
+    type: 'income',
     value: 17400,
     lastUpdate: new Date('2025-02-10T11:16:21.778Z'),
-    prefix: 'Ultima entrada em',
+    prefix: DICTIONARY.LAST_ENTRY,
     icon: ArrowCircleUp,
     variant: 'PRIMARY_700',
     isHighlighted: false,
   },
   {
-    title: 'Saídas',
+    title: DICTIONARY.EXITS,
+    type: 'outcome',
     value: 1259,
     lastUpdate: new Date('2025-02-10T11:16:21.778Z'),
-    prefix: 'Ultima saída em',
+    prefix: DICTIONARY.LAST_EXIT,
     icon: ArrowCircleDown,
     variant: 'SECONDARY_800',
     isHighlighted: false,
   },
   {
-    title: 'Total',
+    title: DICTIONARY.BALANCE,
+    type: 'balance',
     value: 16141,
     lastUpdate: new Date('2025-02-10T11:16:21.778Z'),
-    prefix: 'Atualizado em',
+    prefix: DICTIONARY.LAST_BALANCE,
     icon: CurrencyCircleDollar,
     variant: 'BASE_200',
     isHighlighted: true,

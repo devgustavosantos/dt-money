@@ -1,13 +1,15 @@
 import { Card } from '@/components';
 
-import { cards } from './Summary.data';
+import { useSummary } from './Summary.hook';
 import * as S from './Summary.styles';
 
 export function Summary() {
+  const { realCards } = useSummary();
+
   return (
     <S.SummaryContainer>
       <S.SummaryContent as="section">
-        {cards.map(
+        {realCards.map(
           ({
             title,
             value,
@@ -20,6 +22,7 @@ export function Summary() {
             <Card.Root
               key={title}
               isHighlighted={isHighlighted}
+              isPositive={value >= 0}
             >
               <Card.Top>
                 <Card.Title content={title} />

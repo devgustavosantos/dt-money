@@ -8,7 +8,7 @@ export function useTransactionsTable() {
   const formattedTransactions = transactions.map((transaction) => ({
     ...transaction,
     createdAt: formats.date.format(new Date(transaction.createdAt)),
-    price: formats.money.format(transaction.price),
+    price: formats.money.format(transaction.price / 100),
   }));
 
   const shouldRenderTable =
