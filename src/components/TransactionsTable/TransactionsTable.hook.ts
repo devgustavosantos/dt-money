@@ -2,10 +2,19 @@ import { useTransactionsContext } from '@/contexts';
 import { formats } from '@/utils';
 
 export function useTransactionsTable() {
-  const { transactions, transactionsError, isTransactionsLoading } =
-    useTransactionsContext();
+  const {
+    transactions,
+    transactionsError,
+    isTransactionsLoading,
+    searchTerm,
+    filteredTransactions,
+  } = useTransactionsContext();
 
-  const formattedTransactions = transactions.map((transaction) => ({
+  const transactionsToDisplay = searchTerm
+    ? filteredTransactions
+    : transactions;
+
+  const formattedTransactions = transactionsToDisplay.map((transaction) => ({
     ...transaction,
     createdAt: formats.date.format(new Date(transaction.createdAt)),
     price: formats.money.format(transaction.price / 100),
@@ -14,9 +23,11 @@ export function useTransactionsTable() {
   const shouldRenderTable =
     !isTransactionsLoading && !!formattedTransactions.length;
   const shouldRenderNoTransactions =
-    !isTransactionsLoading && !formattedTransactions.length;
+    !isTransactionsLoading && !formattedTransactions.length && !searchTerm;
   const shouldRenderTransactionsError =
     !isTransactionsLoading && transactionsError;
+  const shouldRenderNoTransactionsFounded =
+    !isTransactionsLoading && !formattedTransactions.length && searchTerm;
 
   return {
     formattedTransactions,
@@ -25,5 +36,6 @@ export function useTransactionsTable() {
     shouldRenderTable,
     shouldRenderNoTransactions,
     shouldRenderTransactionsError,
+    shouldRenderNoTransactionsFounded,
   };
 }

@@ -5,6 +5,7 @@ export const DICTIONARY = {
   COPYRIGHT: '© 2025 - Todos os direitos reservados.',
   SEARCH_A_TRANSACTION: 'Busque uma transação',
   SEARCH: 'Buscar',
+  SEARCH_INPUT_ERROR: 'É obrigatório informar um termo para poder buscar.',
   REGISTER: 'Cadastrar',
   DESCRIPTION: 'Descrição',
   DESCRIPTION_ERROR: `A descrição deve conter ao menos ${CONSTANTS.MIN.DESCRIPTION} caracteres.`,
@@ -27,6 +28,7 @@ export const DICTIONARY = {
   NEW_TRANSACTION_SUCCESS: 'Nova transação cadastrada com sucesso.',
   TRANSACTIONS_ERROR: 'Não foi possível carregar algumas transações.',
   NO_TRANSACTIONS: 'Você ainda não possui transações no momento.',
+  NO_TRANSACTIONS_FOUNDED: 'Nenhuma transação encontrada para o termo buscado.',
   UNAVAILABLE: 'Indisponível',
   ENTRIES: 'Entradas',
   LAST_ENTRY: 'Última entrada em',
@@ -35,4 +37,5 @@ export const DICTIONARY = {
   BALANCE: 'Saldo',
   LAST_BALANCE: 'Atualizado em',
   ITEMS: 'item(ns)',
+  CLEAR: 'Limpar',
 };

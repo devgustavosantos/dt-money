@@ -12,6 +12,7 @@ export function TransactionsTable() {
     shouldRenderTable,
     shouldRenderNoTransactions,
     shouldRenderTransactionsError,
+    shouldRenderNoTransactionsFounded,
   } = useTransactionsTable();
 
   return (
@@ -44,6 +45,11 @@ export function TransactionsTable() {
       )}
       {shouldRenderNoTransactions && (
         <S.NoTransactions>{DICTIONARY.NO_TRANSACTIONS}</S.NoTransactions>
+      )}
+      {shouldRenderNoTransactionsFounded && (
+        <S.NoTransactions>
+          {DICTIONARY.NO_TRANSACTIONS_FOUNDED}
+        </S.NoTransactions>
       )}
       {shouldRenderTransactionsError && <Error>{transactionsError}</Error>}
     </S.TransactionsTableContainer>

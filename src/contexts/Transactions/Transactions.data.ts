@@ -1,6 +1,6 @@
 import { Transaction } from '@/types';
 
-export const transactionsExample: Transaction[] = [
+const transactionsExample: Transaction[] = [
   {
     id: 'a1f4b29e-9c3f-4f2c-9084-e1bc7d9b1d90',
     description: 'Desenvolvimento de site',
@@ -82,3 +82,12 @@ export const transactionsExample: Transaction[] = [
     createdAt: new Date('2025-02-02T00:00:00.000z'),
   },
 ];
+
+const searchableFields: Array<keyof Transaction> = [
+  'description',
+  'category',
+  'price',
+  'createdAt',
+];
+
+export { transactionsExample, searchableFields };

@@ -7,8 +7,11 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     transactions,
     isTransactionsLoading,
     transactionsError,
+    searchTerm,
     createTransaction,
     resetTransactions,
+    handleSearchTerm,
+    filteredTransactions,
   } = useTransactions();
 
   return (
@@ -17,8 +20,11 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
         transactions,
         isTransactionsLoading,
         transactionsError,
+        searchTerm,
+        filteredTransactions,
         createTransaction,
         resetTransactions,
+        handleSearchTerm,
       }}
     >
       {children}

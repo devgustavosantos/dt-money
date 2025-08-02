@@ -1,4 +1,5 @@
 import { collection, getDocs, orderBy, query, where } from 'firebase/firestore';
+import Fuse from 'fuse.js';
 import { useEffect, useState } from 'react';
 
 import { db } from '@/services';
@@ -6,7 +7,7 @@ import { Transaction, transactionSchema } from '@/types';
 import { CONSTANTS, DICTIONARY } from '@/utils';
 
 import { useAuthenticationContext } from '../Authentication';
-import { transactionsExample } from './Transactions.data';
+import { searchableFields, transactionsExample } from './Transactions.data';
 
 export function useTransactions() {
   const { userInfos, isUserAuthenticated } = useAuthenticationContext();
@@ -17,6 +18,7 @@ export function useTransactions() {
   const [isTransactionsLoading, setIsTransactionsLoading] =
     useState(isUserAuthenticated);
   const [transactionsError, setTransactionsError] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   function createTransaction(transaction: Transaction) {
     setTransactions((prevState) => [transaction, ...prevState]);
@@ -25,6 +27,17 @@ export function useTransactions() {
   function resetTransactions() {
     setTransactions(transactionsExample);
   }
+
+  function handleSearchTerm(term: string) {
+    setSearchTerm(term);
+  }
+
+  const fuse = new Fuse(transactions, {
+    keys: searchableFields,
+    threshold: 0.3,
+  });
+
+  const filteredTransactions = fuse.search(searchTerm).map((res) => res.item);
 
   useEffect(() => {
     async function getTransactions() {
@@ -68,7 +81,10 @@ export function useTransactions() {
     transactions,
     isTransactionsLoading,
     transactionsError,
+    searchTerm,
+    filteredTransactions,
     createTransaction,
     resetTransactions,
+    handleSearchTerm,
   };
 }
