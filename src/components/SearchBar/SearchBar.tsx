@@ -26,6 +26,7 @@ export function SearchBar({ className }: SearchBarProps) {
           type="text"
           placeholder={DICTIONARY.SEARCH_A_TRANSACTION}
           {...register('term')}
+          aria-invalid={!!errors.term}
         />
         {searchTerm && (
           <S.Button

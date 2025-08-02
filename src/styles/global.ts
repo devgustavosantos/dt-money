@@ -99,6 +99,10 @@ export const Global = createGlobalStyle`
       color: ${({ theme }) => theme.BASE_500};
       font-size: 16rem;
     }
+
+    &[aria-invalid='true'] {
+      outline: 1rem solid ${({ theme }) => theme.SECONDARY_800};
+    }
   }
 
   @media only screen and (min-width: ${BREAKPOINTS.EXTRA_LARGE}) {

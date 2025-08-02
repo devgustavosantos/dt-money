@@ -26,7 +26,7 @@ export function NewTransaction() {
             type="text"
             placeholder={DICTIONARY.DESCRIPTION}
             {...register('description')}
-            hasError={!!errors.description}
+            aria-invalid={!!errors.description}
           />
           {!!errors.description && (
             <S.EntryError>{errors.description.message}</S.EntryError>
@@ -42,6 +42,7 @@ export function NewTransaction() {
                 onValueChange={(_, __, values) => {
                   field.onChange(values?.float ? values.float * 100 : 0);
                 }}
+                aria-invalid={!!errors.price}
               />
             )}
           />
@@ -54,7 +55,7 @@ export function NewTransaction() {
             type="text"
             placeholder={DICTIONARY.CATEGORY}
             {...register('category')}
-            hasError={!!errors.category}
+            aria-invalid={!!errors.category}
           />
           {!!errors.category && (
             <S.EntryError>{errors.category.message}</S.EntryError>

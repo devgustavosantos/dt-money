@@ -23,9 +23,5 @@ type NewTransactionFormInputs = z.infer<
   typeof newTransactionFormValidationSchema
 >;
 
-interface EntryProps {
-  hasError?: boolean;
-}
-
 export { newTransactionFormValidationSchema };
-export type { NewTransactionFormInputs, EntryProps };
+export type { NewTransactionFormInputs };

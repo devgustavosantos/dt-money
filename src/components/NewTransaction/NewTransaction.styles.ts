@@ -4,8 +4,6 @@ import { BREAKPOINTS } from '@/styles';
 import { ArrowCircleDown, ArrowCircleUp } from '@phosphor-icons/react';
 import * as RadioGroup from '@radix-ui/react-radio-group';
 
-import { EntryProps } from './NewTransaction.types';
-
 const EntriesContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -23,15 +21,12 @@ const EntryWrapper = styled.div`
   gap: 8rem;
 `;
 
-const Entry = styled.input<EntryProps>`
+const Entry = styled.input`
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     appearance: none;
     margin: 0;
   }
-
-  ${({ hasError, theme }) =>
-    hasError && `outline: 1rem solid ${theme.SECONDARY_800}`};
 `;
 
 const EntryError = styled.p`
