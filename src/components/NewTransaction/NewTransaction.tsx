@@ -91,7 +91,7 @@ export function NewTransaction() {
       >
         {isLoading ? <Spinner /> : DICTIONARY.REGISTER}
       </Button>
-      {Object.entries(errors).length === 0 && (
+      {Object.entries(errors).length === 0 && messageRendered && (
         <S.Message>{messageRendered}</S.Message>
       )}
     </form>
