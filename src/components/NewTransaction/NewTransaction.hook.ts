@@ -1,5 +1,5 @@
 import { collection, serverTimestamp, addDoc } from 'firebase/firestore';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useAuthenticationContext, useTransactionsContext } from '@/contexts';
@@ -23,7 +23,7 @@ export function useNewTransaction() {
     register,
     handleSubmit,
     control,
-    formState: { errors, isDirty, isSubmitted },
+    formState: { errors, isDirty, isSubmitSuccessful },
     reset,
   } = useForm<NewTransactionFormInputs>({
     resolver: zodResolver(newTransactionFormValidationSchema),
@@ -71,10 +71,13 @@ export function useNewTransaction() {
       category,
     });
     setMessage(DICTIONARY.NEW_TRANSACTION_SUCCESS);
-    reset();
   }
 
-  const messageRendered = isDirty && isSubmitted ? '' : message;
+  useEffect(() => {
+    reset();
+  }, [isSubmitSuccessful, reset]);
+
+  const messageRendered = isDirty ? '' : message;
 
   return {
     onSubmit,

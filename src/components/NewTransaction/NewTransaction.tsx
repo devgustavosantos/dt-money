@@ -36,9 +36,9 @@ export function NewTransaction() {
           <Controller
             name="price"
             control={control}
-            render={({ formState: { isDirty, isSubmitSuccessful }, field }) => (
+            render={({ formState: { isSubmitted }, field }) => (
               <Currency
-                value={isSubmitSuccessful && !isDirty ? '' : undefined}
+                value={isSubmitted ? '' : undefined}
                 onValueChange={(_, __, values) => {
                   field.onChange(values?.float ? values.float * 100 : 0);
                 }}
