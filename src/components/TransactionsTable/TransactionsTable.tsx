@@ -3,8 +3,11 @@ import { DICTIONARY } from '@/utils';
 
 import { useTransactionsTable } from './TransactionsTable.hook';
 import * as S from './TransactionsTable.styles';
+import { TransactionsTableProps } from './TransactionsTable.types';
 
-export function TransactionsTable() {
+export function TransactionsTable({
+  transactionsToDisplay,
+}: TransactionsTableProps) {
   const {
     formattedTransactions,
     transactionsError,
@@ -13,7 +16,7 @@ export function TransactionsTable() {
     shouldRenderNoTransactions,
     shouldRenderTransactionsError,
     shouldRenderNoTransactionsFounded,
-  } = useTransactionsTable();
+  } = useTransactionsTable({ transactionsToDisplay });
 
   return (
     <S.TransactionsTableContainer isLoading={isTransactionsLoading}>

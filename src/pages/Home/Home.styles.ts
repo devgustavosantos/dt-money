@@ -1,7 +1,19 @@
-import styled from 'styled-components';
+import ReactPaginate from 'react-paginate';
+import styled, { css } from 'styled-components';
+import { z } from 'zod';
 
 import { SearchBar, Wrapper } from '@/components';
 import { BREAKPOINTS } from '@/styles';
+
+const paginationClassNames = z.enum([
+  'page',
+  'pageLink',
+  'active',
+  'previous',
+  'previousLink',
+  'next',
+  'nextLink',
+]).enum;
 
 const HomeContainer = styled.div`
   display: flex;
@@ -45,6 +57,72 @@ const TransactionsNumber = styled.span`
   color: ${({ theme }) => theme.BASE_500};
 `;
 
+const centerStyles = css`
+  display: grid;
+  place-items: center;
+`;
+
+const linkStyles = css`
+  font-size: 24rem;
+  color: ${({ theme }) => theme.PRIMARY_800};
+
+  &[aria-disabled='true'] {
+    color: ${({ theme }) => theme.BASE_600};
+  }
+`;
+
+const CustomReactPaginate = styled(ReactPaginate)`
+  margin: 40rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16rem;
+
+  .${paginationClassNames.page} {
+    border-radius: 6rem;
+    background-color: ${({ theme }) => theme.BASE_600};
+    display: grid;
+    place-items: center;
+    transition: filter 0.4s;
+
+    &:hover {
+      filter: brightness(1.4);
+    }
+  }
+
+  .${paginationClassNames.pageLink} {
+    min-width: 40rem;
+    height: 40rem;
+    padding-inline: 8rem;
+    font-weight: 600;
+    display: grid;
+    place-items: center;
+  }
+
+  .${paginationClassNames.active} {
+    background-color: ${({ theme }) => theme.PRIMARY_900};
+    color: ${({ theme }) => theme.BASE_100};
+  }
+
+  .${paginationClassNames.previous} {
+    ${centerStyles}
+  }
+
+  .${paginationClassNames.previousLink} {
+    ${centerStyles}
+    ${linkStyles}
+  }
+
+  .${paginationClassNames.next} {
+    ${centerStyles}
+  }
+
+  .${paginationClassNames.nextLink} {
+    ${centerStyles}
+    ${linkStyles}
+  }
+`;
+
 export {
   HomeContainer,
   Main,
@@ -52,4 +130,6 @@ export {
   Transactions,
   TransactionsLabel,
   TransactionsNumber,
+  CustomReactPaginate,
+  paginationClassNames,
 };

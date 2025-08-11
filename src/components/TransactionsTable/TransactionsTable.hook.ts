@@ -1,18 +1,13 @@
 import { useTransactionsContext } from '@/contexts';
 import { formats } from '@/utils';
 
-export function useTransactionsTable() {
-  const {
-    transactions,
-    transactionsError,
-    isTransactionsLoading,
-    searchTerm,
-    filteredTransactions,
-  } = useTransactionsContext();
+import { TransactionsTableProps } from './TransactionsTable.types';
 
-  const transactionsToDisplay = searchTerm
-    ? filteredTransactions
-    : transactions;
+export function useTransactionsTable({
+  transactionsToDisplay,
+}: TransactionsTableProps) {
+  const { transactionsError, isTransactionsLoading, searchTerm } =
+    useTransactionsContext();
 
   const formattedTransactions = transactionsToDisplay.map((transaction) => ({
     ...transaction,

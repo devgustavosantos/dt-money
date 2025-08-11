@@ -1,17 +1,18 @@
-import {
-  Header,
-  Summary,
-  TransactionsTable,
-  Pagination,
-  Footer,
-} from '@/components';
-import { useTransactionsContext } from '@/contexts';
+import { Header, Summary, TransactionsTable, Footer } from '@/components';
 import { DICTIONARY } from '@/utils';
+import { CaretLeft, CaretRight } from '@phosphor-icons/react';
 
+import { useHome } from './Home.hook';
 import * as S from './Home.styles';
 
 export function Home() {
-  const { transactions } = useTransactionsContext();
+  const {
+    transactions,
+    currentTransactions,
+    handlePageClick,
+    pageCount,
+    pageRangeDisplayed,
+  } = useHome();
 
   return (
     <S.HomeContainer>
@@ -25,10 +26,21 @@ export function Home() {
           </S.TransactionsNumber>
         </S.Transactions>
         <S.HomeSearchBar />
-        <TransactionsTable />
-        <Pagination
-          current={1}
-          quantity={3}
+        <TransactionsTable transactionsToDisplay={currentTransactions} />
+        <S.CustomReactPaginate
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={pageRangeDisplayed}
+          marginPagesDisplayed={1}
+          pageCount={pageCount}
+          previousLabel={<CaretLeft weight="bold" />}
+          nextLabel={<CaretRight weight="bold" />}
+          pageClassName={S.paginationClassNames.page}
+          pageLinkClassName={S.paginationClassNames.pageLink}
+          activeClassName={S.paginationClassNames.active}
+          previousClassName={S.paginationClassNames.previous}
+          previousLinkClassName={S.paginationClassNames.previousLink}
+          nextClassName={S.paginationClassNames.next}
+          nextLinkClassName={S.paginationClassNames.nextLink}
         />
       </S.Main>
       <Footer />
