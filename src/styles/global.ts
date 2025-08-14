@@ -74,7 +74,7 @@ export const Global = createGlobalStyle`
     }
 
     &:not(:disabled):focus {
-      outline: 2rem solid ${({ theme }) => theme.PRIMARY_700};
+      outline: 2rem solid ${({ theme }) => theme.BASE_200};
     }
   }
 
@@ -101,7 +101,7 @@ export const Global = createGlobalStyle`
     }
 
     &[aria-invalid='true'] {
-      outline: 1rem solid ${({ theme }) => theme.SECONDARY_800};
+      outline: 1rem solid ${({ theme }) => theme.BASE_200};
     }
   }
 

@@ -21,6 +21,10 @@ const SearchEntries = styled.div`
   &:has(:nth-child(3)) {
     grid-template-columns: 1fr auto auto;
   }
+
+  @media only screen and (max-width: ${BREAKPOINTS.SMALL}) {
+    gap: 8rem;
+  }
 `;
 
 const Button = styled.button<SearchButtonProps>`
