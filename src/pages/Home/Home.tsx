@@ -12,6 +12,7 @@ export function Home() {
     handlePageClick,
     pageCount,
     pageRangeDisplayed,
+    shouldRenderPagination,
   } = useHome();
 
   return (
@@ -27,19 +28,21 @@ export function Home() {
         </S.Transactions>
         <S.HomeSearchBar />
         <TransactionsTable transactionsToDisplay={currentTransactions} />
-        <S.CustomReactPaginate
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={pageRangeDisplayed}
-          marginPagesDisplayed={1}
-          pageCount={pageCount}
-          previousLabel={<CaretLeft weight="bold" />}
-          nextLabel={<CaretRight weight="bold" />}
-          pageClassName={S.paginationClassNames.page}
-          pageLinkClassName={S.paginationClassNames.pageLink}
-          activeClassName={S.paginationClassNames.active}
-          previousLinkClassName={S.paginationClassNames.previousLink}
-          nextLinkClassName={S.paginationClassNames.nextLink}
-        />
+        {shouldRenderPagination && (
+          <S.CustomReactPaginate
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={pageRangeDisplayed}
+            marginPagesDisplayed={1}
+            pageCount={pageCount}
+            previousLabel={<CaretLeft weight="bold" />}
+            nextLabel={<CaretRight weight="bold" />}
+            pageClassName={S.paginationClassNames.page}
+            pageLinkClassName={S.paginationClassNames.pageLink}
+            activeClassName={S.paginationClassNames.active}
+            previousLinkClassName={S.paginationClassNames.previousLink}
+            nextLinkClassName={S.paginationClassNames.nextLink}
+          />
+        )}
       </S.Main>
       <Footer />
     </S.HomeContainer>

@@ -53,6 +53,9 @@ export function useHome() {
     setItemOffset(newOffset);
   }
 
+  const shouldRenderPagination =
+    currentTransactions.length > CONSTANTS.MAX_TRANSACTION_PER_PAGE;
+
   useEffect(() => {
     function handleResize() {
       setWindowWidth(window.innerWidth);
@@ -69,5 +72,6 @@ export function useHome() {
     handlePageClick,
     pageCount,
     pageRangeDisplayed,
+    shouldRenderPagination,
   };
 }
