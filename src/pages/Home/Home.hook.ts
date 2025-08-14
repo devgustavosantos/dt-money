@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 import { useTransactionsContext } from '@/contexts';
-import { transactionsExample } from '@/contexts/Transactions/Transactions.data';
 import { BREAKPOINTS } from '@/styles';
 import { CONSTANTS } from '@/utils';
 
@@ -14,7 +13,7 @@ export function useHome() {
 
   const transactionsToDisplay = searchTerm
     ? filteredTransactions
-    : transactionsExample;
+    : transactions;
 
   const endOffset = itemOffset + CONSTANTS.MAX_TRANSACTION_PER_PAGE;
   const currentTransactions = transactionsToDisplay.slice(
