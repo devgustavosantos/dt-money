@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { signInWithGooglePopup } from '@/services';
+import { signInWithGoogleRedirect } from '@/services';
 import { DICTIONARY, handlePromises } from '@/utils';
 
 export function useSignIn() {
@@ -10,7 +10,7 @@ export function useSignIn() {
   async function handleSignIn() {
     setIsLoading(true);
 
-    const { error } = await handlePromises(signInWithGooglePopup);
+    const { error } = await handlePromises(signInWithGoogleRedirect);
 
     setIsLoading(false);
 
