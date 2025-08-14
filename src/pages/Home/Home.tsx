@@ -37,9 +37,7 @@ export function Home() {
           pageClassName={S.paginationClassNames.page}
           pageLinkClassName={S.paginationClassNames.pageLink}
           activeClassName={S.paginationClassNames.active}
-          previousClassName={S.paginationClassNames.previous}
           previousLinkClassName={S.paginationClassNames.previousLink}
-          nextClassName={S.paginationClassNames.next}
           nextLinkClassName={S.paginationClassNames.nextLink}
         />
       </S.Main>

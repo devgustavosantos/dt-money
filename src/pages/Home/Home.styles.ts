@@ -1,5 +1,5 @@
 import ReactPaginate from 'react-paginate';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { z } from 'zod';
 
 import { SearchBar, Wrapper } from '@/components';
@@ -9,9 +9,7 @@ const paginationClassNames = z.enum([
   'page',
   'pageLink',
   'active',
-  'previous',
   'previousLink',
-  'next',
   'nextLink',
 ]).enum;
 
@@ -57,20 +55,6 @@ const TransactionsNumber = styled.span`
   color: ${({ theme }) => theme.BASE_500};
 `;
 
-const centerStyles = css`
-  display: grid;
-  place-items: center;
-`;
-
-const linkStyles = css`
-  font-size: 24rem;
-  color: ${({ theme }) => theme.PRIMARY_800};
-
-  &[aria-disabled='true'] {
-    color: ${({ theme }) => theme.BASE_600};
-  }
-`;
-
 const CustomReactPaginate = styled(ReactPaginate)`
   margin: 40rem auto 0;
   display: flex;
@@ -104,22 +88,15 @@ const CustomReactPaginate = styled(ReactPaginate)`
     color: ${({ theme }) => theme.BASE_100};
   }
 
-  .${paginationClassNames.previous} {
-    ${centerStyles}
-  }
+  .${paginationClassNames.previousLink}, .${paginationClassNames.nextLink} {
+    display: grid;
+    place-items: center;
+    font-size: 24rem;
+    color: ${({ theme }) => theme.BASE_600};
 
-  .${paginationClassNames.previousLink} {
-    ${centerStyles}
-    ${linkStyles}
-  }
-
-  .${paginationClassNames.next} {
-    ${centerStyles}
-  }
-
-  .${paginationClassNames.nextLink} {
-    ${centerStyles}
-    ${linkStyles}
+    &[aria-disabled='true'] {
+      color: ${({ theme }) => theme.BASE_600};
+    }
   }
 `;
 
