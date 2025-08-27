@@ -2,8 +2,8 @@ import { initializeApp } from 'firebase/app';
 import {
   getAuth,
   connectAuthEmulator,
-  signInWithPopup,
   GoogleAuthProvider,
+  signInWithRedirect,
 } from 'firebase/auth';
 import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
 
@@ -28,11 +28,11 @@ provider.setCustomParameters({
   prompt: 'select_account ',
 });
 
-const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider);
 
 if (import.meta.env.DEV) {
   connectAuthEmulator(auth, `http://localhost:${config.emulators.auth.port}`);
   connectFirestoreEmulator(db, '127.0.0.1', config.emulators.firestore.port);
 }
 
-export { auth, db, signInWithGooglePopup };
+export { auth, db, signInWithGoogleRedirect };

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 import { BREAKPOINTS } from '@/styles';
+import { ArrowCircleDown, ArrowCircleUp } from '@phosphor-icons/react';
 import * as RadioGroup from '@radix-ui/react-radio-group';
-
-import { EntryProps } from './NewTransaction.types';
 
 const EntriesContainer = styled.div`
   display: flex;
@@ -22,15 +21,12 @@ const EntryWrapper = styled.div`
   gap: 8rem;
 `;
 
-const Entry = styled.input<EntryProps>`
+const Entry = styled.input`
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     appearance: none;
     margin: 0;
   }
-
-  ${({ hasError, theme }) =>
-    hasError && `outline: 1rem solid ${theme.SECONDARY_800}`};
 `;
 
 const EntryError = styled.p`
@@ -48,11 +44,14 @@ const TransactionTypeWrapper = styled(RadioGroup.Root)`
   gap: 16rem;
 `;
 
-const TransactionTypeText = styled.span`
-  font-size: 16rem;
-  color: ${({ theme }) => theme.BASE_400};
-  line-height: 160%;
-  user-select: none;
+const CustomArrowCircleUp = styled(ArrowCircleUp)`
+  font-size: 24rem;
+  color: ${({ theme }) => theme.PRIMARY_700};
+`;
+
+const CustomArrowCircleDown = styled(ArrowCircleDown)`
+  font-size: 24rem;
+  color: ${({ theme }) => theme.SECONDARY_800};
 `;
 
 const TransactionTypeButton = styled(RadioGroup.Item)`
@@ -63,18 +62,9 @@ const TransactionTypeButton = styled(RadioGroup.Item)`
   justify-content: center;
   gap: 8rem;
   background-color: ${({ theme }) => theme.BASE_700};
-  font-size: 24rem;
 
   &:hover {
     filter: brightness(1.4);
-  }
-
-  &[value='income'] {
-    color: ${({ theme }) => theme.PRIMARY_700};
-  }
-
-  &[value='outcome'] {
-    color: ${({ theme }) => theme.SECONDARY_800};
   }
 
   &[data-state='checked'] {
@@ -89,7 +79,7 @@ const TransactionTypeButton = styled(RadioGroup.Item)`
     }
 
     /* stylelint-disable-next-line */
-    ${TransactionTypeText} {
+    ${CustomArrowCircleUp}, ${CustomArrowCircleDown} {
       color: ${({ theme }) => theme.BASE_200};
     }
   }
@@ -107,6 +97,7 @@ export {
   TransactionTypeContainer,
   TransactionTypeWrapper,
   TransactionTypeButton,
-  TransactionTypeText,
+  CustomArrowCircleUp,
+  CustomArrowCircleDown,
   Message,
 };

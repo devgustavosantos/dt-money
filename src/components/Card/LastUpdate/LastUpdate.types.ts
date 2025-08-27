@@ -1,7 +1,7 @@
 import { CardProps } from '../Card.types';
 
 interface UseLastUpdateProps {
-  date: Date;
+  date: Date | null;
   prefix: string;
 }
 

@@ -4,7 +4,8 @@ import { CONSTANTS, DICTIONARY } from '@/utils';
 
 const newTransactionFormValidationSchema = z.object({
   description: z
-    .string()
+    .string({ message: DICTIONARY.DESCRIPTION_ERROR })
+    .trim()
     .min(CONSTANTS.MIN.DESCRIPTION, { message: DICTIONARY.DESCRIPTION_ERROR }),
   price: z
     .number({ message: DICTIONARY.PRICE_ERROR })
@@ -13,7 +14,8 @@ const newTransactionFormValidationSchema = z.object({
     message: DICTIONARY.INCOME_OUTCOME_ERROR,
   }),
   category: z
-    .string()
+    .string({ message: DICTIONARY.CATEGORY_ERROR })
+    .trim()
     .min(CONSTANTS.MIN.CATEGORY, { message: DICTIONARY.CATEGORY_ERROR }),
 });
 
@@ -21,9 +23,5 @@ type NewTransactionFormInputs = z.infer<
   typeof newTransactionFormValidationSchema
 >;
 
-interface EntryProps {
-  hasError?: boolean;
-}
-
 export { newTransactionFormValidationSchema };
-export type { NewTransactionFormInputs, EntryProps };
+export type { NewTransactionFormInputs };

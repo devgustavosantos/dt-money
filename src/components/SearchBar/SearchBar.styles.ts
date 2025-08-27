@@ -2,29 +2,50 @@ import styled from 'styled-components';
 
 import { Wrapper } from '@/components';
 import { BREAKPOINTS } from '@/styles';
-import { MagnifyingGlass } from '@phosphor-icons/react';
+import { MagnifyingGlass, X } from '@phosphor-icons/react';
+
+import { SearchButtonProps } from './SearchBar.types';
 
 const SearchBarContainer = styled(Wrapper)`
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 16rem;
 `;
 
-const Button = styled.button`
+const SearchEntries = styled.div`
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr auto;
+  gap: 16rem;
+
+  &:has(:nth-child(3)) {
+    grid-template-columns: 1fr auto auto;
+  }
+
+  @media only screen and (max-width: ${BREAKPOINTS.SMALL}) {
+    gap: 8rem;
+  }
+`;
+
+const Button = styled.button<SearchButtonProps>`
   display: flex;
   align-items: center;
   gap: 12rem;
   padding: 14rem 32rem;
-  border: 1rem solid ${({ theme }) => theme.PRIMARY_700};
+  border: 1rem solid
+    ${({ theme, variant }) =>
+    variant === 'search' ? theme.PRIMARY_700 : theme.SECONDARY_800};
   border-radius: 6rem;
-  color: ${({ theme }) => theme.PRIMARY_700};
+  color: ${({ theme, variant }) =>
+    variant === 'search' ? theme.PRIMARY_700 : theme.SECONDARY_800};
   transition:
     color 0.4s,
     background-color 0.4s;
 
-  &:hover {
+  &:not(:disabled)&:hover {
     color: ${({ theme }) => theme.BASE_200};
-    background-color: ${({ theme }) => theme.PRIMARY_700};
+    background-color: ${({ theme, variant }) =>
+    variant === 'search' ? theme.PRIMARY_700 : theme.SECONDARY_800};
     filter: brightness(1);
   }
 
@@ -37,6 +58,10 @@ const CustomMagnifyingGlass = styled(MagnifyingGlass)`
   font-size: 24rem;
 `;
 
+const CustomX = styled(X)`
+  font-size: 24rem;
+`;
+
 const ButtonText = styled.span`
   color: inherit;
   font-weight: 600;
@@ -46,4 +71,11 @@ const ButtonText = styled.span`
   }
 `;
 
-export { SearchBarContainer, Button, CustomMagnifyingGlass, ButtonText };
+export {
+  SearchBarContainer,
+  SearchEntries,
+  Button,
+  CustomMagnifyingGlass,
+  CustomX,
+  ButtonText,
+};

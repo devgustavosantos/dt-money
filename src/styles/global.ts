@@ -74,7 +74,7 @@ export const Global = createGlobalStyle`
     }
 
     &:not(:disabled):focus {
-      outline: 2rem solid ${({ theme }) => theme.PRIMARY_700};
+      outline: 2rem solid ${({ theme }) => theme.BASE_200};
     }
   }
 
@@ -98,6 +98,10 @@ export const Global = createGlobalStyle`
     &::placeholder {
       color: ${({ theme }) => theme.BASE_500};
       font-size: 16rem;
+    }
+
+    &[aria-invalid='true'] {
+      outline: 1rem solid ${({ theme }) => theme.BASE_200};
     }
   }
 

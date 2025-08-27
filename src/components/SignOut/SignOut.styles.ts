@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { BREAKPOINTS } from '@/styles';
+import { BREAKPOINTS, Spinner } from '@/styles';
 import { SignOut } from '@phosphor-icons/react';
 
 const ButtonsContainer = styled.div`
@@ -39,4 +39,8 @@ const CustomSignOut = styled(SignOut)`
   }
 `;
 
-export { ButtonsContainer, SignOutButton, CustomSignOut };
+const SignOutSpinner = styled(Spinner)`
+  margin: 0 auto;
+`;
+
+export { ButtonsContainer, SignOutButton, CustomSignOut, SignOutSpinner };

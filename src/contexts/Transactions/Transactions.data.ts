@@ -1,0 +1,93 @@
+import { Transaction } from '@/types';
+
+const transactionsExample: Transaction[] = [
+  {
+    id: 'a1f4b29e-9c3f-4f2c-9084-e1bc7d9b1d90',
+    description: 'Desenvolvimento de site',
+    price: 12000,
+    type: 'income',
+    category: 'Venda',
+    createdAt: new Date('2025-04-13T00:00:00.000z'),
+  },
+  {
+    id: 'b6d2f1ce-70a0-4b92-8ee4-26b2e439fb2d',
+    description: 'Hambúrguer',
+    price: 59,
+    type: 'outcome',
+    category: 'Alimentação',
+    createdAt: new Date('2025-04-10T00:00:00.000z'),
+  },
+  {
+    id: 'c3e8a0c2-f79e-40c3-b39e-4f0c4ad60f02',
+    description: 'Aluguel do apartamento',
+    price: 1200,
+    type: 'outcome',
+    category: 'Casa',
+    createdAt: new Date('2025-03-27T00:00:00.000z'),
+  },
+  {
+    id: 'd4d1a9b8-21c3-4f9d-83b3-9b223ccfef14',
+    description: 'Computador',
+    price: 5400,
+    type: 'income',
+    category: 'Venda',
+    createdAt: new Date('2025-03-15T00:00:00.000z'),
+  },
+  {
+    id: 'e8f37bfa-00e0-4c94-ae14-38f7fdf59f75',
+    description: 'Desenvolvimento de site',
+    price: 8000,
+    type: 'income',
+    category: 'Venda',
+    createdAt: new Date('2025-03-13T00:00:00.000z'),
+  },
+  {
+    id: 'f1a7d8ef-78e4-4b56-bdbe-f27a3e0b3381',
+    description: 'Jantar',
+    price: 39,
+    type: 'outcome',
+    category: 'Alimentação',
+    createdAt: new Date('2025-03-10T00:00:00.000z'),
+  },
+  {
+    id: 'fa2c4f17-df31-4cf4-b37f-05512f6591dc',
+    description: 'Aluguel do apartamento',
+    price: 1200,
+    type: 'outcome',
+    category: 'Casa',
+    createdAt: new Date('2025-02-27T00:00:00.000z'),
+  },
+  {
+    id: 'a9cb73eb-3673-4c14-abe5-8e9255f79234',
+    description: 'Salário',
+    price: 5400,
+    type: 'income',
+    category: 'Salário',
+    createdAt: new Date('2025-02-15T00:00:00.000z'),
+  },
+  {
+    id: 'b7364e30-4e55-4b5f-8916-49c25113985b',
+    description: 'Almoço',
+    price: 30,
+    type: 'outcome',
+    category: 'Alimentação',
+    createdAt: new Date('2025-02-05T00:00:00.000z'),
+  },
+  {
+    id: 'cae69f84-6be3-4cd7-81c4-10b6072e9a9d',
+    description: 'Fone de ouvido',
+    price: 150,
+    type: 'outcome',
+    category: 'Itens',
+    createdAt: new Date('2025-02-02T00:00:00.000z'),
+  },
+];
+
+const searchableFields: Array<keyof Transaction> = [
+  'description',
+  'category',
+  'price',
+  'createdAt',
+];
+
+export { transactionsExample, searchableFields };

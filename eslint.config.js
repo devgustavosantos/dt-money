@@ -52,6 +52,8 @@ export default tseslint.config(
         },
       ],
       'max-lines': ['error', 100],
+      'no-console': ['error', { allow: ['warn', 'error'] }],
+      'no-debugger': 'error',
     },
   },
   {
