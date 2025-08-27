@@ -1,4 +1,4 @@
-# 💵 DT Money
+# :dollar: DT Money
 
 Este projeto é um gerenciador intuitico de finanças, que permite a visualização intuitiva das transações.
 
@@ -6,7 +6,7 @@ Este projeto é um gerenciador intuitico de finanças, que permite a visualizaç
     <img src="https://i.imgur.com/AmMRkQq.png" alt="Capa do projeto">
 </h1>
 
-## 📖 Sumário
+## :open_book: Sumário
 
 - [Pré-Visualização](#clapper-pré-visualização)
 - [Aviso](#loudspeaker-aviso)
@@ -17,7 +17,7 @@ Este projeto é um gerenciador intuitico de finanças, que permite a visualizaç
 
 </br>
 
-## 🎬 Pré-Visualização
+## :clapper: Pré-Visualização
 
 <h1 align="center">
   <img src="https://i.imgur.com/52yGSaC.gif" alt="gif da pré-visualização">
@@ -29,7 +29,7 @@ Este projeto é um gerenciador intuitico de finanças, que permite a visualizaç
 
 </br>
 
-## 📢 Aviso
+## :loudspeaker: Aviso
 
 - O projeto **está finalizado**, mas poderá ter melhorias no futuro.
 
@@ -39,7 +39,7 @@ Este projeto é um gerenciador intuitico de finanças, que permite a visualizaç
 
 </br>
 
-## 📝 Sobre
+## :memo: Sobre
 
 Este é um projeto do programa [Ignite da Rocketseat](https://www.rocketseat.com.br/formacao/react), para a apresentação dos seguinters conceitos:
 
@@ -50,7 +50,7 @@ Este é um projeto do programa [Ignite da Rocketseat](https://www.rocketseat.com
 
 </br>
 
-## 💾 Tecnologias
+## :floppy_disk: Tecnologias
 
 - **ReactJS** - utilizado para construir as interfaces;
 - **TS** - usado para fazer toda a lógica da aplicação;
@@ -64,7 +64,7 @@ Este é um projeto do programa [Ignite da Rocketseat](https://www.rocketseat.com
 
 </br>
 
-## 🛠️ Funcionalidades
+## :hammer: Funcionalidades
 
 - Logar:
 - Cadastrar transação;
@@ -75,7 +75,7 @@ Este é um projeto do programa [Ignite da Rocketseat](https://www.rocketseat.com
 
 </br>
 
-## 💡 Utilização
+## :bulb: Utilização
 
 - Para utilizar esse projeto localmente, você deverá ter configurado o [Firebase Emulator](https://firebase.google.com/docs/emulator-suite?hl=pt-br), e seguir os passos abaixo.
 
@@ -121,6 +121,6 @@ _Esses são os recursos disponíveis nessa Aplicação, se algum recurso não fu
 
 _Caso persista, por favor,entre em contato com [devgustavosantos@outlook.com](mailto:devgustavosantos@outlook.com)._
 
-## 🤓 Autor
+## :nerd_face: Autor
 
 Feito com ❤️ por Dev Gustavo Santos 😀 Veja meu [LinkedIn.](https://www.linkedin.com/in/devgustavosantos/)
