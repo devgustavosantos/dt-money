@@ -13,6 +13,7 @@ Este projeto é um gerenciador intuitico de finanças, que permite a visualizaç
 - [Sobre](#memo-sobre)
 - [Tecnologias](#floppy_disk-tecnologias)
 - [Funcionalidades](#hammer-funcionalidades)
+- [Utilização](#bulb-utilização)
 - [Autor](#nerd_face-autor)
 
 </br>
