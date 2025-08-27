@@ -34,7 +34,7 @@ Este projeto é um gerenciador intuitico de finanças, que permite a visualizaç
 
 - O projeto **está finalizado**, mas poderá ter melhorias no futuro.
 
-- Você pode testar a aplicação [clicando aqui!](dt-money-2025.netlify.app)
+- Você pode testar a aplicação [clicando aqui!](https://dt-money-2025.netlify.app/)
 
 - Você também pode clonar o repositório, e executar a aplicação localmente.
 
